@@ -1,0 +1,153 @@
+/* 
+
+1. Add your custom Css styles below
+2. Place the this code in your template: 
+
+ <link href="css/custom.css" rel="stylesheet">
+
+*/
+
+/*Theme Name: Lab IP
+Text Domain: Lab IP
+Version: 1.0
+Description: Template Untuk Lab IP UMY
+Author: Hafizh Pratama
+*/
+
+.text-black {
+    color: #3d3d3d;
+}
+
+input:not([type="checkbox"]):not([type="radio"]), select {
+    line-height: 18px;
+    padding: 10px 16px;
+    min-height: 40px;
+    font-size: .9rem;
+}
+
+.wpcf7-textarea {
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    width: 100%;
+}
+
+.wpcf7 input {
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    width: 100%;
+}
+
+.wpcf7-submit {
+    border: none!important;
+    font-family: "Poppins", sans-serif;
+    border-radius: 5px 5px 5px 5px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .5px;
+    text-decoration: none;
+    outline: none;
+    padding: 12px 18px;
+    position: relative;
+    text-transform: uppercase;
+    background-color: #FFB848;
+    border-color: #FFB848;
+    border-width: 1px;
+    border-style: solid;
+    color: #ffffff;
+    transition: all 0.3s;
+    margin-bottom: 6px;
+    outline: none;
+    line-height: 14px;
+    cursor: pointer;
+}
+
+.layanan-tabs {
+    left: 110px;
+    top: 0px;
+}
+
+.animated.fadeInUp.visible h4 {
+    font-weight: 500;
+}
+
+.text-black p{
+    color: #3d3d3d!important;
+}
+
+@media (max-width: 1024px) {
+    .width-600{
+        width: 100%;
+    }
+    .tabs.tabs-vertical .nav-tabs .nav-link{
+        width: 100%;
+    }
+    .heading-text.heading-section h3:before {
+        display: none;
+    }
+    .layanan-tabs {
+        left: 0px!important;
+        top: 0px!important;
+    }
+}
+
+/* Add indicator arrow for the active tab */
+
+.nav-pills-custom .nav-link {
+    color: #aaa;
+    background: #fff;
+    position: relative;
+}
+
+/* Add indicator arrow for the active tab */
+
+@media (min-width: 992px) {
+    .nav-pills-custom .nav-link::before {
+        content: '';
+        display: block;
+        border-top: 35px solid transparent;
+        border-left: 10px solid #FEBD0E;
+        border-bottom: 35px solid transparent;
+        position: absolute;
+        top: 50%;
+        right: -12px;
+        transform: translateY(-50%);
+        opacity: 0;
+    }
+}
+
+.nav-pills-custom .nav-link.active::before {
+    opacity: 1;
+}
+
+.container-slider-text {
+    height:100%;
+}
+
+.slider-text {
+   width:500px;
+   margin-top: 35vh;
+}
+
+.slider-text h2 {
+    color:#fff;
+    line-height:1.1em;
+}
+.slider-text p {
+    color:#fff;
+    font-family: poppins;
+    font-weight: 400;
+}
+
+@media (max-width: 700px) {
+    .slider-text {
+        color:#fff;
+        width:100%;
+        padding:0 30px;
+    }
+    .slider-text h2 {
+        font-size: 30px;
+    }
+    .slider-text p {
+        font-size: 14px;
+    }
+}
