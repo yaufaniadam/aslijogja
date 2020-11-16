@@ -12,8 +12,6 @@
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,700,900|Open+Sans:400,700" rel="stylesheet">
     <meta name="google-site-verification" content="syyHsd8pyG_bVPCCaxDOQKw017AgT-K-pDnLH-WHHX0" />
-    <link rel="icon" type="image/x-icon" sizes="16x16" href="<?php bloginfo('template_directory'); ?>/favico.ico">
-
     <?php wp_head(); ?>
 </head>
 

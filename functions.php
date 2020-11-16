@@ -4,7 +4,7 @@ require_once('inc/better-excerpts.php');
 
 require 'update-checker/plugin-update-checker.php';
 $myUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
-	'https://solusidesain.net/master-theme/labip/theme.json',
+	'https://solusidesain-update-theme.netlify.app/labip/theme.json',
 	__FILE__, //Full path to the main plugin file or functions.php.
 	'lab-ip'
 );
