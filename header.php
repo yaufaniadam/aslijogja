@@ -31,7 +31,7 @@
                             $logo = wp_get_attachment_image_src(($custom_logo_id));
                         }
                         ?>
-                        <a href="/" class="logo-default" data-dark-logo="<?php echo $logo[0] ?>">
+                        <a href="<?php echo get_bloginfo('url'); ?>" class="logo-default" data-dark-logo="<?php echo $logo[0] ?>">
                             <img src="<?php $custom_logo_id = get_theme_mod('custom_logo');
                                         $image = wp_get_attachment_image_src($custom_logo_id, 'full');
                                         echo $image[0]; ?>" alt="Lab IP" class="py-3 d-none d-md-block">

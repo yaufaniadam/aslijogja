@@ -1,29 +1,8 @@
 <?php /* Template Name: CSR*/ ?>
 <?php
 get_header();
+include('inc/heading.php');
 ?>
-
-<!-- SECTION IMAGE FULLSCREEN -->
-<div class="row" style="background-image:url(<?php echo get_field('gambar_1') ?>); background-size: cover; background-position: center center;">
-    <div class="col-lg-6 mx-0 px-0">
-    </div>
-    <div class="col-lg-6 mx-0 px-0">
-        <section class="fullscreen background-yellow">
-            <div class="">
-                <div class="col-10 ml-5 mt-5 text-black">
-                    <h2 class="margin-bottom-0">
-                        <?php echo get_field('judul_1') ?>
-                    </h2>
-                    <p>
-                        <?php echo get_field('keterangan_1') ?>
-                    </p>
-                    <div data-animate="fadeInUp" data-animate-delay="900"></div>
-                </div>
-            </div>
-        </section>
-    </div>
-</div>
-<!-- end: SECTION IMAGE FULLSCREEN -->
 
 <!-- Layanan -->
 <section style="background-color: #FCFCFC;">
@@ -75,7 +54,7 @@ get_header();
             <h3><?php echo get_field('judul_judul_berita') ?></h3>
         </div>
         <div id="blog" class="grid-layout post-4-columns m-b-30" data-item="post-item">
-            <?php the_berita(); ?>
+            <?php the_berita(get_field('berita')); ?>
         </div>
     </div>
 </section>

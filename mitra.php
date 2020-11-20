@@ -2,8 +2,23 @@
 
 <?php
 get_header();
+include('inc/heading.php');
 ?>
-<!-- SECTION IMAGE FULLSCREEN -->
+
+<!-- Mitra Kami -->
+<section>
+    <div class="container">
+        <div class="heading-text heading-section container">
+            <h3>
+                <?php echo get_field('judul_mitra') ?>
+            </h3>
+            <span class="lead">
+                <?php echo get_field('keterangan_mitra') ?>
+            </span>
+        </div>
+        <?php mitra(get_field('mitra')) ?>
+    </div>
+</section>
 
 <?php
 $layanan = get_field('layanan');
@@ -12,7 +27,7 @@ if ($layanan) : ?>
     foreach ($layanan as $post) :
     ?>
         <div class="row d-flex <?php echo ($i % 2 == 0) ? "flex-row-reverse" : '' ?> ">
-            <div class="col-lg-6 mx-0 px-0" style="background-image:url(<?php echo get_field('pd_gambar_heading', $post->ID) ?>); background-size: cover; background-position: center center;">
+            <div class="col-lg-6 mx-0 px-0" style="background-image:url(<?php echo get_field('gambar_heading', $post->ID) ?>); background-size: cover; background-position: center center;">
 
             </div>
 
@@ -24,7 +39,7 @@ if ($layanan) : ?>
                                 <?php echo get_the_title($post->ID); ?>
                             </h2>
                             <p>
-                                <?php echo get_field('pd_deskripsi_heading', $post->ID); ?>
+                                <?php echo get_field('deskripsi_heading', $post->ID); ?>
                             </p>
                             <div data-animate="fadeInUp" data-animate-delay="900"></div>
                             <a href="<?php echo get_the_permalink($post->ID); ?>" class="btn <?php echo ($i % 2 == 0) ? "background-yellow" : 'background-green' ?> border-0">Selengkapnya</a>
@@ -32,26 +47,7 @@ if ($layanan) : ?>
                     </div>
                 </section>
             </div>
-            <?php if ($i == 1) : ?>
-                <?php wp_reset_query(); ?>
-                <!-- Mitra Kami -->
-                <section>
-                    <div class="container">
-                        <div class="heading-text heading-section container">
-                            <h3>
-                                <?php echo get_field('judul_mitra') ?>
-                            </h3>
-                            <span class="lead">
-                                <?php echo get_field('keterangan_mitra') ?>
-                            </span>
-                        </div>
-                        <?php the_mitra() ?>
-                    </div>
-                </section>
 
-
-                <!-- end: Mitra Kami -->
-            <?php endif; ?>
         </div>
 
     <?php $i++;
@@ -59,7 +55,9 @@ if ($layanan) : ?>
     <?php
     wp_reset_postdata(); ?>
 <?php endif; ?>
-<!-- end: SECTION IMAGE FULLSCREEN -->
+
+
+
 <!-- Testimonial Carousel -->
 <section style="background: #FEBD0E; padding: 40px 0;">
     <div class="container">
@@ -70,7 +68,7 @@ if ($layanan) : ?>
             <span class="lead"><?php the_field('mitra_deskripsi_testimoni') ?></span>
         </div>
         <!-- Testimonials -->
-        <?php the_testimoni() ?>
+        <?php the_testimoni(get_field('testimony_cats')); ?>
 </section>
 <!-- end: Testimonial -->
 <!--call-to-action dark -->

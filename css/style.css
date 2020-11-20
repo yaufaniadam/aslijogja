@@ -11911,16 +11911,17 @@ body.breakpoint-xl .pricing-table .col-lg-2 .plan-list ul li, body.breakpoint-lg
     border-radius: 50%;
     display: block;
     float: none;
-    height: 72px;
+    height: 92px;
     margin: 0 auto 10px;
-    width: 72px; }
+    width: 92px; }
   .testimonial .testimonial-item > p {
-    font-size: 15px;
-    line-height: 22px;
+    font-size: 18px;
+    line-height: 28px;
     margin-bottom: 0;
     padding-bottom: 20px;
     font-weight: 400;
-    margin-top: 10px; }
+    margin-top: 10px;
+    font-family: poppins; }
   .testimonial .testimonial-item > span {
     font-weight: 600;
     font-size: 15px;
@@ -11937,7 +11938,9 @@ body.breakpoint-xl .pricing-table .col-lg-2 .plan-list ul li, body.breakpoint-lg
   background-color: #ffffff;
   border-radius: 8px; }
   .testimonial.testimonial-box .testimonial-item p {
-    font-size: 14px; }
+    font-size: 16px;
+    font-family: Poppins;
+    line-height: 1.2em; }
 .testimonial.testimonial-single .testimonial-item {
   padding: 30px 80px;
   background-color: transparent;
@@ -11945,18 +11948,18 @@ body.breakpoint-xl .pricing-table .col-lg-2 .plan-list ul li, body.breakpoint-lg
   .testimonial.testimonial-single .testimonial-item > img {
     box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.06); }
   .testimonial.testimonial-single .testimonial-item p {
-    font-size: 20px; }
+    font-size: 16px; }
 .testimonial.testimonial-left .testimonial-item {
   text-align: left; }
   .testimonial.testimonial-left .testimonial-item > img {
     display: inherit;
     float: left;
     margin: 0 0 40px 0;
-    height: 200px;
-    width: 200px; }
+    height: 150px;
+    width: 150px; }
   .testimonial.testimonial-left .testimonial-item > p,
   .testimonial.testimonial-left .testimonial-item > span {
-    margin-left: 220px;
+    margin-left: 200px;
     color: #000000; }
 .testimonial.testimonial-blockquote .testimonial-item > p {
   font-style: italic;

@@ -16,18 +16,19 @@
                 border-radius: 50%;
                 display: block;
                 float: none;
-                height: 72px;
+                height: 92px;
                 margin: 0 auto 10px;
-                width: 72px;
+                width: 92px;
             }
 
             p {
-                font-size: 15px;
-                line-height: 22px;
+                font-size: 18px;
+                line-height: 28px;
                 margin-bottom: 0;
                 padding-bottom: 20px;
                 font-weight: 400;
                 margin-top: 10px;
+                font-family: poppins;
             }
 
             span {
@@ -53,7 +54,9 @@
         border-radius: 8px;
 
         p {
-            font-size: 14px;
+            font-size: 16px;
+            font-family: Poppins;
+            line-height: 1.2em;
         }
     }
 
@@ -67,7 +70,7 @@
         }
 
         p {
-            font-size: 20px;
+            font-size: 16px;
         }
     }
 
@@ -79,13 +82,13 @@
                 display: inherit;
                 float: left;
                 margin: 0 0 40px 0;
-                height: 200px;
-                width: 200px;
+                height: 150px;
+                width: 150px;
             }
 
             p,
             span {
-                margin-left: 220px;
+                margin-left: 200px;
                 color: $color-black;
             }
         }

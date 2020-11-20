@@ -1,6 +1,7 @@
 <?php
 require_once('inc/wp_bootstrap_navwalker.php');
 require_once('inc/better-excerpts.php');
+require_once('inc/cpt.php');
 
 require 'update-checker/plugin-update-checker.php';
 $myUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
@@ -29,6 +30,23 @@ function labip_theme_support()
 
 add_action('after_setup_theme', 'labip_theme_support');
 
+//Disable Default Dashboard Widgets
+function remove_dashboard_meta()
+{
+	remove_meta_box('dashboard_incoming_links', 'dashboard', 'normal'); //Removes the 'incoming links' widget
+	remove_meta_box('dashboard_plugins', 'dashboard', 'normal'); //Removes the 'plugins' widget
+	remove_meta_box('dashboard_primary', 'dashboard', 'normal'); //Removes the 'WordPress News' widget
+	remove_meta_box('dashboard_secondary', 'dashboard', 'normal'); //Removes the secondary widget
+	remove_meta_box('dashboard_quick_press', 'dashboard', 'side'); //Removes the 'Quick Draft' widget
+	remove_meta_box('dashboard_recent_drafts', 'dashboard', 'side'); //Removes the 'Recent Drafts' widget
+	remove_meta_box('dashboard_recent_comments', 'dashboard', 'normal'); //Removes the 'Activity' widget
+	remove_meta_box('dashboard_right_now', 'dashboard', 'normal'); //Removes the 'At a Glance' widget
+	remove_meta_box('dashboard_activity', 'dashboard', 'normal'); //Removes the 'Activity' widget (since 3.8)
+	remove_meta_box('rg_forms_dashboard', 'dashboard', 'normal'); //Removes the 'Activity' widget (since 3.8)
+	remove_meta_box('dashboard_site_health', 'dashboard', 'normal'); //Removes the 'Activity' widget (since 3.8)
+	remove_action('admin_notices', 'update_nag');
+}
+add_action('admin_init', 'remove_dashboard_meta');
 
 function tjd_wp_title($title, $sep)
 {
@@ -277,189 +295,9 @@ function tjd_latest_post($number, $thumb)
 	</div>
 <?php }
 
-function create_post_types_jadwal()
+
+function mitra($cat = null)
 {
-	// Slider post type 
-	$label = array(
-		'name' 				=> __('Jadwal', 'tjd-framework'),
-		'singular_name' 	=> __('Jadwal', 'tjd-framework'),
-		'add_new' 			=> _x('Add New', 'Jadwal', 'tjd-framework'),
-		'add_new_item' 		=> __('Add New Jadwal', 'tjd-framework'),
-		'edit_item' 		=> __('Edit Jadwal', 'tjd-framework'),
-		'new_item' 			=> __('New Jadwal', 'tjd-framework'),
-		'view_item' 		=> __('View Jadwal', 'tjd-framework'),
-		'search_items' 		=> __('Search Jadwal', 'tjd-framework'),
-		'not_found' 		=> __('No Jadwal found', 'tjd-framework'),
-		'not_found_in_trash' => __('No Jadwal found in Trash', 'tjd-framework'),
-		'parent_item_colon' => ''
-	);
-	$args = array(
-		'labels' 			=> $label,
-		'description' 		=> __('All Jadwal upload here', 'tjd-framework'),
-		'public' 			=> true,
-		'supports'			=> array('title', 'thumbnail'),
-		'query_var' 		=> true,
-		'rewrite' 			=> array('slug' => 'gambar-jadwal-kami'),
-		'menu_icon'			=> 'dashicons-images-alt',
-		'show_in_nav_menus' => false,
-		'has_archive' 		=> true,
-		'menu_position' 	=> 20,
-	);
-	register_post_type('jadwal', $args);
-}
-add_action('init', 'create_post_types_jadwal');
-
-// Add taxonomies
-add_action('init', 'create_taxonomies_jadwal');
-
-function create_taxonomies_jadwal()
-{
-	// Mitra taxonomies
-	$jadwal_cats = array(
-		'name' => __('Jadwal Categories', 'tjd-framework'),
-		'singular_name' => __('Jadwal Category', 'tjd-framework'),
-		'search_items' =>  __('Search Jadwal Categories', 'tjd-framework'),
-		'all_items' => __('All Jadwals Categories', 'tjd-framework'),
-		'parent_item' => __('Parent Jadwal Category', 'tjd-framework'),
-		'parent_item_colon' => __('Parent Jadwal Category:', 'tjd-framework'),
-		'edit_item' => __('Edit Jadwal Category', 'tjd-framework'),
-		'update_item' => __('Update Jadwal Category', 'tjd-framework'),
-		'add_new_item' => __('Add New Jadwal Category', 'tjd-framework'),
-		'new_item_name' => __('New Jadwal Category Name', 'tjd-framework'),
-		'choose_from_most_used'	=> __('Choose from the most used Jadwal categories', 'tjd-framework')
-	);
-
-	register_taxonomy('jadwal_cats', 'jadwal', array(
-		'hierarchical' => true,
-		'labels' => $jadwal_cats,
-		'query_var' => true,
-		'rewrite' => array('slug' => 'gambar-jadwal-category'),
-	));
-}
-
-function create_post_types_gallery()
-{
-	// Slider post type 
-	$label = array(
-		'name' 				=> __('Gallery', 'tjd-framework'),
-		'singular_name' 	=> __('Gallery', 'tjd-framework'),
-		'add_new' 			=> _x('Add New', 'Gallery', 'tjd-framework'),
-		'add_new_item' 		=> __('Add New Gallery', 'tjd-framework'),
-		'edit_item' 		=> __('Edit Gallery', 'tjd-framework'),
-		'new_item' 			=> __('New Gallery', 'tjd-framework'),
-		'view_item' 		=> __('View Gallery', 'tjd-framework'),
-		'search_items' 		=> __('Search Gallery', 'tjd-framework'),
-		'not_found' 		=> __('No Gallery found', 'tjd-framework'),
-		'not_found_in_trash' => __('No Gallery found in Trash', 'tjd-framework'),
-		'parent_item_colon' => ''
-	);
-	$args = array(
-		'labels' 			=> $label,
-		'description' 		=> __('All Gallery upload here', 'tjd-framework'),
-		'public' 			=> true,
-		'supports'			=> array('title', 'thumbnail'),
-		'query_var' 		=> true,
-		'rewrite' 			=> array('slug' => 'gallery'),
-		'menu_icon'			=> 'dashicons-images-alt',
-		'show_in_nav_menus' => false,
-		'has_archive' 		=> true,
-		'menu_position' 	=> 20,
-	);
-	register_post_type('gallery', $args);
-}
-add_action('init', 'create_post_types_gallery');
-
-// Add taxonomies
-add_action('init', 'create_taxonomies_gallery');
-
-function create_taxonomies_gallery()
-{
-	// Mitra taxonomies
-	$gallery_cats = array(
-		'name' => __('Gallery Categories', 'tjd-framework'),
-		'singular_name' => __('Gallery Category', 'tjd-framework'),
-		'search_items' =>  __('Search Gallery Categories', 'tjd-framework'),
-		'all_items' => __('All Gallerys Categories', 'tjd-framework'),
-		'parent_item' => __('Parent Gallery Category', 'tjd-framework'),
-		'parent_item_colon' => __('Parent Gallery Category:', 'tjd-framework'),
-		'edit_item' => __('Edit Gallery Category', 'tjd-framework'),
-		'update_item' => __('Update Gallery Category', 'tjd-framework'),
-		'add_new_item' => __('Add New Gallery Category', 'tjd-framework'),
-		'new_item_name' => __('New Gallery Category Name', 'tjd-framework'),
-		'choose_from_most_used'	=> __('Choose from the most used Gallery categories', 'tjd-framework')
-	);
-
-	register_taxonomy('gallery_cats', 'gallery', array(
-		'hierarchical' => true,
-		'labels' => $gallery_cats,
-		'query_var' => true,
-		'rewrite' => array('slug' => 'gambar-gallery-category'),
-	));
-}
-
-function create_post_types_mitra()
-{
-	// Slider post type 
-	$label = array(
-		'name' 				=> __('Mitra', 'tjd-framework'),
-		'singular_name' 	=> __('Mitra', 'tjd-framework'),
-		'add_new' 			=> _x('Add New', 'Mitra', 'tjd-framework'),
-		'add_new_item' 		=> __('Add New Mitra', 'tjd-framework'),
-		'edit_item' 		=> __('Edit Mitra', 'tjd-framework'),
-		'new_item' 			=> __('New Mitra', 'tjd-framework'),
-		'view_item' 		=> __('View Mitra', 'tjd-framework'),
-		'search_items' 		=> __('Search Mitra', 'tjd-framework'),
-		'not_found' 		=> __('No Mitra found', 'tjd-framework'),
-		'not_found_in_trash' => __('No Mitra found in Trash', 'tjd-framework'),
-		'parent_item_colon' => ''
-	);
-	$args = array(
-		'labels' 			=> $label,
-		'description' 		=> __('All Mitra upload here', 'tjd-framework'),
-		'public' 			=> true,
-		'supports'			=> array('title', 'thumbnail'),
-		'query_var' 		=> true,
-		'rewrite' 			=> array('slug' => 'gambar-mitra-kami'),
-		'menu_icon'			=> 'dashicons-images-alt',
-		'show_in_nav_menus' => false,
-		'has_archive' 		=> true,
-		'menu_position' 	=> 20,
-	);
-	register_post_type('mitra', $args);
-}
-add_action('init', 'create_post_types_mitra');
-
-// Add taxonomies
-add_action('init', 'create_taxonomies_mitra');
-
-function create_taxonomies_mitra()
-{
-	// Mitra taxonomies
-	$mitra_cats = array(
-		'name' => __('Mitra Categories', 'tjd-framework'),
-		'singular_name' => __('Mitra Category', 'tjd-framework'),
-		'search_items' =>  __('Search Mitra Categories', 'tjd-framework'),
-		'all_items' => __('All Mitras Categories', 'tjd-framework'),
-		'parent_item' => __('Parent Mitra Category', 'tjd-framework'),
-		'parent_item_colon' => __('Parent Mitra Category:', 'tjd-framework'),
-		'edit_item' => __('Edit Mitra Category', 'tjd-framework'),
-		'update_item' => __('Update Mitra Category', 'tjd-framework'),
-		'add_new_item' => __('Add New Mitra Category', 'tjd-framework'),
-		'new_item_name' => __('New Mitra Category Name', 'tjd-framework'),
-		'choose_from_most_used'	=> __('Choose from the most used Mitra categories', 'tjd-framework')
-	);
-
-	register_taxonomy('mitra_cats', 'mitra', array(
-		'hierarchical' => true,
-		'labels' => $mitra_cats,
-		'query_var' => true,
-		'rewrite' => array('slug' => 'gambar-mitra-category'),
-	));
-}
-
-function mitra($cat = null, $jumlah)
-{
-	$data_items = ($jumlah == '') ? 3 : $jumlah;
 
 ?>
 	<?php
@@ -467,7 +305,13 @@ function mitra($cat = null, $jumlah)
 		'post_status'   => 'publish',
 		'post_type'     => 'mitra',
 		'posts_per_page' => 12,
-		'cat' => $cat
+		'tax_query' => array(
+			array(
+				'taxonomy' => 'mitra_cats',
+				'terms' => $cat,
+				'field' => 'term_id',
+			)
+		)
 	);
 
 	$the_query = null;
@@ -615,68 +459,8 @@ function the_berita_all()
 <?php
 }
 
-// Testimoni
-function create_post_types_testimoni()
-{
-	// Slider post type 
-	$label = array(
-		'name' 				=> __('Testimoni', 'tjd-framework'),
-		'singular_name' 	=> __('Testimoni', 'tjd-framework'),
-		'add_new' 			=> _x('Add New', 'Testimoni', 'tjd-framework'),
-		'add_new_item' 		=> __('Add New Testimoni', 'tjd-framework'),
-		'edit_item' 		=> __('Edit Testimoni', 'tjd-framework'),
-		'new_item' 			=> __('New Testimoni', 'tjd-framework'),
-		'view_item' 		=> __('View Testimoni', 'tjd-framework'),
-		'search_items' 		=> __('Search Testimoni', 'tjd-framework'),
-		'not_found' 		=> __('No Testimoni found', 'tjd-framework'),
-		'not_found_in_trash' => __('No Testimoni found in Trash', 'tjd-framework'),
-		'parent_item_colon' => ''
-	);
-	$args = array(
-		'labels' 			=> $label,
-		'description' 		=> __('All Testimoni upload here', 'tjd-framework'),
-		'public' 			=> true,
-		'supports'			=> array('title', 'thumbnail'),
-		'query_var' 		=> true,
-		'rewrite' 			=> array('slug' => 'testimoni-kami'),
-		'menu_icon'			=> 'dashicons-format-status',
-		'show_in_nav_menus' => false,
-		'has_archive' 		=> true,
-		'menu_position' 	=> 20,
-	);
-	register_post_type('testimoni', $args);
-}
-add_action('init', 'create_post_types_testimoni');
 
-// Add taxonomies
-add_action('init', 'create_taxonomies_testimoni');
-
-function create_taxonomies_testimoni()
-{
-	// Mitra taxonomies
-	$testimoni_cats = array(
-		'name' => __('Testimoni Categories', 'tjd-framework'),
-		'singular_name' => __('Testimoni Category', 'tjd-framework'),
-		'search_items' =>  __('Search Testimoni Categories', 'tjd-framework'),
-		'all_items' => __('All Testimonis Categories', 'tjd-framework'),
-		'parent_item' => __('Parent Testimoni Category', 'tjd-framework'),
-		'parent_item_colon' => __('Parent Testimoni Category:', 'tjd-framework'),
-		'edit_item' => __('Edit Testimoni Category', 'tjd-framework'),
-		'update_item' => __('Update Testimoni Category', 'tjd-framework'),
-		'add_new_item' => __('Add New Testimoni Category', 'tjd-framework'),
-		'new_item_name' => __('New Testimoni Category Name', 'tjd-framework'),
-		'choose_from_most_used'	=> __('Choose from the most used Testimoni categories', 'tjd-framework')
-	);
-
-	register_taxonomy('testimoni_cats', 'testimoni', array(
-		'hierarchical' => true,
-		'labels' => $testimoni_cats,
-		'query_var' => true,
-		'rewrite' => array('slug' => 'gambar-testimoni-category'),
-	));
-}
-
-function the_testimoni()
+function the_testimoni($cat = null)
 {
 
 ?>
@@ -685,11 +469,19 @@ function the_testimoni()
 		'post_status'   => 'publish',
 		'post_type'     => 'testimoni',
 		'posts_per_page' => 3,
+		'tax_query' => array(
+			array(
+				'taxonomy' => 'testimoni_cats',
+				'terms' => $cat,
+				'field' => 'term_id',
+			)
+		),
 	);
 
 	$the_query = null;
 	$the_query = new WP_Query();
 	$the_query->query($args);
+
 	?>
 	<!-- Testimonials -->
 	<div class="carousel arrows-visibile testimonial testimonial-single testimonial-left" data-items="1" data-autoplay="true" data-loop="true" data-autoplay="3500">
@@ -698,14 +490,14 @@ function the_testimoni()
 			<div class="testimonial-item">
 				<?php
 				if (has_post_thumbnail()) {
-					the_post_thumbnail('thumbnail-square');
+					the_post_thumbnail('thumbnail');
 				} else {
 				?>
 					<img src="<?php bloginfo('template_directory'); ?>/images/blog/17.jpg" alt="<?php the_field('nama_testimoni'); ?>">
 				<?php
 				}
 				?>
-				<p class="text-black" style="font-size: 16px;"><?php the_field('teks_testimoni'); ?></p>
+				<p><?php the_field('teks_testimoni'); ?></p>
 				<span class="text-black"><?php the_field('nama_testimoni'); ?></span>
 				<span class="text-black"><?php the_field('jabatan_testimoni') ?></span>
 				<p class="text-black"></p>
@@ -718,13 +510,13 @@ function the_testimoni()
 <?php
 }
 
-function the_suksesstory()
+function the_suksesstory($cat)
 {
 ?>
 	<?php
 
 	$args = array(
-		'category_name' => 'sukses-story',
+		'cat' => $cat,
 		'post_type' => 'post',
 		'posts_per_page' => 4
 	);
@@ -742,7 +534,7 @@ function the_suksesstory()
 			<?php while ($_posts->have_posts()) : $_posts->the_post(); ?>
 
 				<!-- Testimonials item -->
-				<div class="testimonial-item text-white">
+				<div class="testimonial-item text-whit">
 					<div class="row">
 
 						<div class="col-lg-5">
@@ -751,9 +543,11 @@ function the_suksesstory()
 						</div>
 						<div class="col-lg-6 my-4">
 							<h3 style="color: #065139 !important;"><?php the_title() ?></h3>
-							<div class="text-black"><?php
-																			echo the_excerpt();
-																			?></div>
+							<p class="text-blacks">
+								<?php
+								echo excerpt('20');
+								?>
+							</p>
 							<a href="<?php echo get_the_permalink() ?>" class="btn background-yellow ?> border-0">Selengkapnya</a>
 						</div>
 					</div>

@@ -1,28 +1,9 @@
 <?php /* Template Name: Mahasiswa */ ?>
 <?php
 get_header();
+include('inc/heading.php');
 ?>
-<!-- SECTION IMAGE FULLSCREEN -->
-<div class="row" style="background-image:url(<?php echo get_field('layanan_foto') ?>); background-size: cover; background-position: center center;">
-    <div class="col-lg-6 mx-0 px-0">
-    </div>
-    <div class="col-lg-6 mx-0 px-0">
-        <section class="fullscreen background-yellow">
-            <div class="">
-                <div class="col-10 ml-5 mt-5 text-black">
-                    <h2 class="margin-bottom-0">
-                        <?php echo get_field('layanan_judul') ?>
-                    </h2>
-                    <p style="font-family: 'Poppins', sans-serif;">
-                        <?php echo get_field('layanan_deskripsi') ?>
-                    </p>
-                    <div data-animate="fadeInUp" data-animate-delay="900"></div>
-                </div>
-            </div>
-        </section>
-    </div>
-</div>
-<!-- end: SECTION IMAGE FULLSCREEN -->
+
 <!-- Pilih Layanan -->
 <section>
     <div class="container">

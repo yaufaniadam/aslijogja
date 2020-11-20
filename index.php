@@ -1,15 +1,27 @@
 <?php get_header(); ?>
 
+
+<?php
+if (has_post_thumbnail()) {
+    $bg_title = get_the_post_thumbnail_url($post->ID, 'full');
+} else {
+    $bg_title = get_bloginfo('template_directory') . "/img/noimage.jpg";
+} ?>
+<!-- Page title -->
+<section data-bg-parallax="<?php echo $bg_title; ?>">
+    <div class="bg-overlay" data-style="13"></div>
+    <div class="container">
+        <div class="page-title text-center text-light">
+            <h1>Arsip Berita</h1>
+        </div>
+    </div>
+</section>
 <!-- Page Content -->
 <section id="page-content" class="sidebar-right">
     <div class="container">
         <div class="row">
             <!-- content -->
             <div class="content col-lg-9">
-                <!-- Page title -->
-                <div class="page-title mb-5">
-                    <h3>Berita</h3>
-                </div>
                 <!-- Blog -->
                 <div id="blog" class="post-thumbnails">
                     <?php if (have_posts()) : while (have_posts()) : the_post(); ?>

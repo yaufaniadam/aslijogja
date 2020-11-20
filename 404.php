@@ -12,9 +12,8 @@ get_header();
             </div>
             <div class="col-lg-6">
                 <div class="text-left">
-                    <h1 class="text-medium">Ooops, This Page Could Not Be Found!</h1>
-                    <p class="lead">The page you are looking for might have been removed, had its name changed, or is
-                        temporarily unavailable.</p>
+                    <h1 class="text-medium">Ooops, halaman tidak ditemukan!</h1>
+                    <p class="lead">Ada beberapa keungkinan: link yang Anda ketikkan salah, atau halaman sudah dihapus.</p>
                     <div class="seperator m-t-20 m-b-20"></div>
                 </div>
             </div>

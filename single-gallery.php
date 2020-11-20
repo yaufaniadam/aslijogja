@@ -1,74 +1,68 @@
 <?php
-
 get_header();
-
 ?>
+<?php
+if (has_post_thumbnail()) {
+  $bg_title = get_the_post_thumbnail_url($post->ID, 'full');
+} else {
+  $bg_title = bloginfo('template_directory') . "/img/noimage.jpg";
+} ?>
+<!-- Page title -->
+<section data-bg-parallax="<?php echo $bg_title; ?>">
+  <div class="bg-overlay" data-style="13"></div>
+  <div class="container">
+    <div class="page-title text-center text-light">
+      <h1>Galeri <?php the_title(); ?></h1>
+    </div>
+  </div>
+</section>
 <!-- Page Content -->
 <section id="page-content" class="sidebar-right">
   <div class="container">
     <div class="row">
       <!-- content -->
-      <div class="content col-lg-9">
-        <!-- Blog -->
-        <div id="blog" class="single-post">
-          <!-- Post single item-->
-          <div class="post-item">
-            <div class="post-item-wrap">
-              <div class="post-image">
-                <a href="#">
-                  <?php if (has_post_thumbnail($post->ID)) : ?>
-                    <?php $image = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'single-post-thumbnail'); ?>
+      <div class="content col-lg-12">
 
-                    <img alt="" src="<?php echo $image[0]; ?>">
-                  <?php endif; ?>
-                </a>
-              </div>
-              <div class="post-item-description">
-                <h3 style="font-weight: bold;"><?php
-                                                echo get_the_title($post_id);
-                                                ?></h3>
-                <div class="post-meta">
-                  <span class="post-meta-date"><i class="fas fa-calendar-alt"> </i><?php echo get_the_date(); ?></span>
-                  <span class="post-meta-comments"><a href=""><i class="fa fa-comments-o"></i><?php comments_number(); ?></a></span>
-                  <span class="post-meta-category"><a href=""><i class="fa fa-tag"></i>
-                      <?php the_tags(); ?> </a></span>
-                  <div class="post-meta-share">
-
-                  </div>
+        <div class="container">
+          <!-- Gallery -->
+          <div class="grid-layout grid-3-columns" data-margin="20" data-item="grid-item" data-lightbox="gallery">
+            <?php
+            $images = acf_photo_gallery('pilih_foto', $post->ID);
+            if (count($images)) :
+              //Cool, we got some data so now let's loop over it
+              foreach ($images as $image) :
+                $id = $image['id']; // The attachment id of the media
+                $title = $image['title']; //The title
+                $caption = $image['caption']; //The caption
+                $full_image_url = $image['full_image_url']; //Full size image url
+                $full_image_url_resize = acf_photo_gallery_resize_image($full_image_url, 262, 160); //Resized size to 262px width by 160px height image url
+                $thumbnail_image_url = $image['thumbnail_image_url']; //Get the thumbnail size image url 150px by 150px
+                $url = $image['url']; //Goto any link when clicked
+                $target = $image['target']; //Open normal or new tab
+                $alt = get_field('photo_gallery_alt', $id); //Get the alt which is a extra field (See below how to add extra fields)
+                $class = get_field('photo_gallery_class', $id); //Get the class which is a extra field (See below how to add extra fields)
+            ?>
+                <div class="grid-item">
+                  <a class="image-hover-zoom" href="<?php echo $full_image_url; ?>" data-lightbox="gallery-image">
+                    <img src="<?php echo $full_image_url_resize; ?>" alt="<?php echo $title; ?>" title="<?php echo $title; ?>">
+                  </a>
                 </div>
-                <?php
-                if (have_posts()) {
-                  while (have_posts()) {
-                    the_post();
-                    the_content();
-                  }
-                }
-                ?>
-              </div>
-              <div class="post-tags">
-                <a href="#"><?php the_tags(); ?></a>
-              </div>
-              <div class="post-navigation">
-                <?php if (get_previous_post()) { ?>
-                  <a href="<?php echo get_the_permalink(get_previous_post()); ?>" class="post-prev">
-                    <div class="post-prev-title"><span>Previous Post</span><?php echo get_the_title(get_previous_post()) ?></div>
-                  </a>
 
-                <?php } ?>
-                <?php if (get_next_post()) { ?>
-                  <a href="<?php echo get_the_permalink(get_next_post()); ?>" class="post-next">
-                    <div class="post-next-title"><span>Next Post</span><?php echo get_the_title(get_next_post()) ?></div>
-                  </a>
-                <?php } ?>
-              </div>
-            </div>
+
+
+            <?php endforeach;
+            endif; ?>
+
           </div>
-          <!-- end: Post single item-->
+          <!-- end: Gallery -->
         </div>
+
+        <!-- Footer -->
+
       </div>
       <!-- end: content -->
       <!-- Sidebar-->
-      <?php get_sidebar(); ?>
+      <?php// get_sidebar(); ?>
       <!-- end: Sidebar-->
     </div>
   </div>

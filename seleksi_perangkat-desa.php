@@ -1,30 +1,8 @@
 <?php /* Template Name: Perangkat Desa */ ?>
 <?php
 get_header();
+include('inc/heading.php');
 ?>
-<!-- SECTION IMAGE FULLSCREEN -->
-<div class="row" style="background-image:url(<?php the_field('pd_gambar_heading') ?>); background-size: cover; background-position: center center;">
-    <div class="col-lg-6 mx-0 px-0">
-
-    </div>
-
-    <div class="col-lg-6 mx-0 px-0">
-        <section class="fullscreen background-yellow">
-            <div class="">
-                <div class="col-10 ml-5 mt-5 text-black">
-                    <h2 class="margin-bottom-0">
-                        <?php the_field('pd_judul_heading') ?>
-                    </h2>
-                    <p>
-                        <?php the_field('pd_deskripsi_heading') ?>
-                    </p>
-                    <div data-animate="fadeInUp" data-animate-delay="900"></div>
-                </div>
-            </div>
-        </section>
-    </div>
-</div>
-<!-- end: SECTION IMAGE FULLSCREEN -->
 <!-- Tentang -->
 <section style="background-color: #F8F8F8;">
     <div class="container">
@@ -73,7 +51,7 @@ get_header();
         <div class="heading-text heading-section text-black">
             <h3><?php the_field('judul_sukses_story') ?></h3>
         </div>
-        <?php the_suksesstory() ?>
+        <?php the_suksesstory(get_field('success_story_cat')) ?>
     </div>
 </section>
 <!-- End: Sukses Story -->
@@ -133,9 +111,7 @@ get_header();
         </div>
         <!--Gallery Carousel -->
         <?php
-
-        the_mitra();
-
+        mitra(get_field('mitra_cat'));
         ?>
     </div>
 </section>
@@ -148,7 +124,7 @@ get_header();
             <span class="lead"><?php the_field('pd_deskripsi_testimoni') ?></span>
         </div>
         <!-- Testimonials -->
-        <?php the_testimoni() ?>
+        <?php the_testimoni(get_field('testimony_cats')) ?>
 </section>
 <!-- end: Testimonial -->
 <!--call-to-action dark -->
