@@ -1,11 +1,8 @@
 <?php get_header(); ?>
 
 <?php
-if (has_post_thumbnail()) {
-  $bg_title = get_the_post_thumbnail_url($post->ID, 'full');
-} else {
-  echo $bg_title = get_bloginfo('template_directory') . "/img/noimage.jpg";
-} ?>
+$bg_title = get_bloginfo('template_directory') . "/images/bg-ip.jpg";
+?>
 <!-- Page title -->
 <section data-bg-parallax="<?php echo $bg_title; ?>">
   <div class="bg-overlay" data-style="13"></div>

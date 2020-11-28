@@ -1,26 +1,26 @@
 <?php get_header(); ?>
 
 <?php
-if (has_post_thumbnail()) {
-    $bg_title = get_the_post_thumbnail_url($post->ID, 'full');
-} else {
-    $bg_title = get_bloginfo('template_directory') . "/images/bg-ip.jpg";
-} ?>
+$bg_title = get_bloginfo('template_directory') . "/images/bg-ip.jpg";
+?>
+
+<link href='<?php echo get_template_directory_uri(); ?>/plugins/fullcalendar/fullcalendar.min.css' rel='stylesheet' />
 <!-- Page title -->
 <section data-bg-parallax="<?php echo $bg_title; ?>">
     <div class="bg-overlay" data-style="13"></div>
     <div class="container">
         <div class="page-title text-center text-light">
-            <h1>Kategori : <?php echo single_cat_title('', false); ?></h1>
+            <h1>Jadwal</h1>
         </div>
     </div>
 </section>
+
 <!-- Page Content -->
 <section id="page-content" class="sidebar-right">
     <div class="container">
         <div class="row">
             <!-- content -->
-            <div class="content col-lg-9">
+            <div class="content col-lg-9 offset-lg-2">
                 <!-- Page title -->
 
                 <!-- Blog -->
@@ -37,7 +37,7 @@ if (has_post_thumbnail()) {
                                             } else {
                                             ?>
                                                 <a href="<?php the_permalink(); ?>">
-                                                    <img src="<?php bloginfo('template_directory'); ?>/img/noimage.jpg" alt="<?php the_title(); ?>" />
+                                                    <img src="<?php bloginfo('template_directory'); ?>/images/noimage.jpg" alt="<?php the_title(); ?>" />
                                                 </a>
                                             <?php } ?>
                                         </a>
@@ -69,7 +69,12 @@ if (has_post_thumbnail()) {
 
                                         <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?>
                                             </a></h2>
-                                        <p><?php echo excerpt('20'); ?></p>
+                                        <p><i class="fas fa-calendar"></i>
+                                            <?php echo get_field('tanggal') ?></p>
+                                        <p><i class="fas fa-clock"></i>
+                                            <?php echo get_field('waktu') ?></p>
+                                        <p><i class="fas fa-map-marker"></i>
+                                            <?php echo get_field('tempat') ?></p>
                                         <a href="<?php the_permalink(); ?>" class="item-link">Selengkapnya <i class="icon-chevron-right"></i></a>
                                     </div>
                                 </div>
@@ -89,7 +94,8 @@ if (has_post_thumbnail()) {
                 </div>
             </div>
             <!-- end: content -->
-            <?php get_sidebar(); ?>
+            <?php // get_sidebar(); 
+            ?>
         </div>
     </div>
 </section>

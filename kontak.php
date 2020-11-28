@@ -1,11 +1,11 @@
 <?php /* Template Name: Kontak */ ?>
+<?php get_header(); ?>
 <?php
-
-get_header();
-
+$bg_title = get_bloginfo('template_directory') . "/images/bg-ip.jpg";
 ?>
+
 <!-- Page title -->
-<section data-bg-parallax="<?php the_field('foto_background_kontak') ?>" style="padding-top: 160px; padding-bottom: 160px;">
+<section data-bg-parallax="<?php echo $bg_title; ?>" style="padding-top: 160px; padding-bottom: 160px;">
     <div class="container">
         <div class="page-title text-center text-light">
             <h1><?php the_title(); ?></h1>
@@ -19,18 +19,18 @@ get_header();
     <div class="container">
         <div class="row">
             <div class="col-lg-6">
-            <div class="heading-text heading-section">
-            <h3 class="text-uppercase"><?php the_field('kontak_judul') ?></h3>
-            </div>
+                <div class="heading-text heading-section">
+                    <h3 class="text-uppercase"><?php the_field('kontak_judul') ?></h3>
+                </div>
                 <p><?php the_field('kontak_deskripsi') ?></p>
                 <div class="m-t-30 mb-5">
-                <?php the_content(); ?>
+                    <?php the_content(); ?>
                 </div>
             </div>
             <div class="col-lg-6">
-            <div class="heading-text heading-section">
-            <h3 class="text-uppercase"><?php the_field('kontak_alamat') ?></h3>
-            </div>
+                <div class="heading-text heading-section">
+                    <h3 class="text-uppercase"><?php the_field('kontak_alamat') ?></h3>
+                </div>
                 <div class="row">
                     <div class="col-lg-6">
                         <address>
@@ -40,7 +40,7 @@ get_header();
                     </div>
                     <div class="col-lg-6">
                         <address>
-                        <strong><?php the_field('judul_alamat_2') ?></strong><br>
+                            <strong><?php the_field('judul_alamat_2') ?></strong><br>
                             <?php the_field('deskripsi_alamat_2') ?>
                         </address>
                     </div>
