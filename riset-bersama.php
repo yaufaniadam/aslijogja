@@ -33,7 +33,7 @@ get_header();
         </div>
         <div class="row mt-5">
             <div class="col-lg-12">
-                <div  data-animate="fadeInUp" data-animate-delay="0">
+                <div data-animate="fadeInUp" data-animate-delay="0">
                     <p><?php echo get_field('deskripsi_tentang') ?></p>
                 </div>
             </div>
@@ -64,17 +64,60 @@ get_header();
 </section>
 <!-- END Tim Peneliti -->
 
+<section class="content">
+    <div class="container">
+        <div class="heading-text heading-section">
+            <h3 style="font-weight: bold;"><?php echo get_field('judul_peneliti') ?></h3>
+        </div>
+        <div class="row icon-boxes">
+            <?php
+            $layanan2 = get_field('peneliti');
+
+            if ($layanan2) {
+                foreach ($layanan2 as $layanan) :
+            ?>
+                    <div class="col-md-4 col-6">
+                        <div class="icon-box effect medium border square">
+                            <div class="icon">
+                                <?php
+                                if (has_post_thumbnail($layanan->ID)) {
+                                    echo get_the_post_thumbnail($layanan->ID, 'micro-thumb');
+                                } else {
+                                ?>
+                                    <img src="<?php bloginfo('template_directory'); ?>/images/blog/17.jpg" alt="<?php echo get_the_title($layanan->ID); ?>">
+                                <?php
+                                }
+                                ?>
+
+                            </div>
+
+                            <div class="icon-box-content">
+                                <!--<a href="<?php echo get_the_permalink($layanan->ID); ?>">-->
+                                <h3><?php echo get_the_title($layanan->ID); ?></h3>
+                                <p><?php echo  get_field('keahlian', $layanan->ID); ?></p>
+                                <!-- </a> -->
+                            </div>
+                        </div>
+                    </div>
+
+            <?php endforeach;
+            } ?>
+
+
+        </div>
+    </div>
+
+</section>
+
 <!-- Tentang Riset Bersama -->
-<section style="background-color: #FCFCFC;">
+<section class="content" style="background-color: #FCFCFC;">
     <div class="container">
         <div class="heading-text heading-section">
             <h3><?php echo get_field('judul_produk_riset') ?></h3>
         </div>
         <div class="row">
             <div class="col-lg-12">
-                <div data-animate="fadeInUp" data-animate-delay="0">
-                    <p><?php echo get_field('produk_riset') ?></p>
-                </div>
+                <?php produk(); ?>
             </div>
         </div>
     </div>

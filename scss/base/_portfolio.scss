@@ -101,7 +101,6 @@ Portfolio
 			font-weight: 700;
 			letter-spacing: 1px;
 			line-height: 18px;
-			text-transform: uppercase;
 			margin-bottom: 4px;
 		}
 
@@ -585,20 +584,19 @@ Portfolio
 
 			h3 {
 				color: $color-body;
-				font-size: 16px;
+				font-size: 14px;
 				font-style: normal;
-				font-weight: 700;
+				font-weight: 400;
 				letter-spacing: 1px;
-				line-height: 18px;
+				line-height: 20px;
 				margin-bottom: 4px;
-				text-transform: uppercase;
 			}
 
 			span {
-				color: $color-body;
+				color: red;
 				font-size: 13px;
 				font-style: normal;
-				font-weight: 400;
+				font-weight: 700;
 				letter-spacing: 0;
 				line-height: 15px;
 				text-transform: capitalize;

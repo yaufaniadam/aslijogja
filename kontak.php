@@ -1,18 +1,17 @@
 <?php /* Template Name: Kontak */ ?>
-<?php get_header(); ?>
-<?php
-$bg_title = get_bloginfo('template_directory') . "/images/bg-ip.jpg";
+<?php get_header();
+$bg_title = get_field('foto_background_kontak');
 ?>
 
 <!-- Page title -->
-<section data-bg-parallax="<?php echo $bg_title; ?>" style="padding-top: 160px; padding-bottom: 160px;">
+<section data-bg-parallax="<?php echo $bg_title; ?>">
+    <div class="bg-overlay" data-style="13"></div>
     <div class="container">
         <div class="page-title text-center text-light">
             <h1><?php the_title(); ?></h1>
         </div>
     </div>
 </section>
-<!-- end: Page title -->
 <!-- FULL WIDTH PAGE -->
 <!-- CONTENT -->
 <section>

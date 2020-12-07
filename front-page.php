@@ -58,47 +58,77 @@ get_header();
 </section>
 <!-- END WHAT WE DO -->
 <!-- Layanan -->
-<section style="background-color: #eaeaea;">
+<section style="background-color: #eaeaea;padding-bottom:130px">
     <div class="container">
         <div class="heading-text heading-section">
-            <h3><?php echo get_field('judul_layanan') ?></h3>
-            <span class="lead"><?php echo get_field('keterangan_layanan') ?></span>
+            <h3><?php echo get_field('judul_gallery') ?></h3>
+            <span class="lead"><?php echo get_field('keterangan_gallery') ?></span>
         </div>
-        <div class="row">
-            <div class="col-lg-4 mb-5">
-                <div data-animate="fadeInUp" data-animate-delay="0">
-                    <?php echo get_field('layanan_1') ?>
+        <?php
+        $post_vid_id = get_field('video_embed')->ID;
+        $vid = get_field('video', $post_vid_id);
+        ?>
+        <div id="portfolio" class="grid-layout portfolio-5-columns" data-margin="0">
+            <!-- portfolio item -->
+            <div class="portfolio-item large-width img-zoom ct-photography ct-media ct-branding ct-marketing ct-webdesign">
+                <div class="portfolio-item-wrap">
+                    <div class="portfolio-image">
+
+                        <?php
+                        if (has_post_thumbnail($post_vid_id)) {
+
+                            echo get_the_post_thumbnail($post_vid_id, 'small');
+                        } else {
+                        ?>
+                            <img src="<?php bloginfo('template_directory'); ?>/images/blog/17.jpg" alt="<?php the_title(); ?>">
+                        <?php
+                        }
+                        ?>
+
+                    </div>
+                    <div class="portfolio-description">
+                        <a title="Paper Pouch!" data-lightbox="iframe" href="<?php echo  $vid; ?>"><i class="icon-play"></i></a>
+                    </div>
                 </div>
             </div>
-            <div class="col-lg-4 mb-5">
-                <div data-animate="fadeInUp" data-animate-delay="0">
-                    <?php echo get_field('layanan_2') ?>
+            <!-- end: portfolio item -->
+            <?php
+            $foto = get_field('foto');
+
+            foreach ($foto as $foto) {
+            ?>
+                <!-- portfolio item -->
+                <div class="portfolio-item img-zoom ct-photography ct-media ct-branding ct-Media">
+                    <div class="portfolio-item-wrap">
+                        <div class="portfolio-image">
+                            <a href="#">
+                                <?php
+                                if (has_post_thumbnail($foto->ID)) {
+                                    echo get_the_post_thumbnail($foto->ID, 'small');
+                                } else {
+                                ?>
+                                    <img src="<?php bloginfo('template_directory'); ?>/images/blog/17.jpg" alt="<?php the_title(); ?>">
+                                <?php
+                                }
+                                ?>
+                            </a>
+                        </div>
+                        <div class="portfolio-description">
+                            <a href="<?php echo $foto->guid ?>">
+                                <h3><?php echo $foto->post_title ?></h3>
+                            </a>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="col-lg-4 mb-5">
-                <div data-animate="fadeInUp" data-animate-delay="0">
-                    <?php echo get_field('layanan_3') ?>
-                </div>
-            </div>
-            <div class="col-lg-4 mb-5">
-                <div data-animate="fadeInUp" data-animate-delay="0">
-                    <?php echo get_field('layanan_4') ?>
-                </div>
-            </div>
-            <div class="col-lg-4 mb-5">
-                <div data-animate="fadeInUp" data-animate-delay="0">
-                    <?php echo get_field('layanan_5') ?>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div data-animate="fadeInUp" data-animate-delay="0">
-                    <?php echo get_field('layanan_6') ?>
-                </div>
-            </div>
+
+            <?php } // end foreach 
+            ?>
         </div>
     </div>
+    <div class="shape-divider" data-style="7" data-height="100"></div>
 </section>
 <!-- end: PORTFOLIO -->
+
 <!-- Mitra Kami -->
 <section>
     <div class="container">
@@ -113,7 +143,9 @@ get_header();
 
         ?>
     </div>
+
 </section>
+
 <!-- end: Mitra Kami -->
 <!-- BLOG -->
 <section class="content">

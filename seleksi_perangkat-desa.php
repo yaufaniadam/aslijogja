@@ -124,7 +124,8 @@ include('inc/heading.php');
             <span class="lead"><?php the_field('pd_deskripsi_testimoni') ?></span>
         </div>
         <!-- Testimonials -->
-        <?php the_testimoni(get_field('testimony_cats')) ?>
+        <?php
+        the_testimoni(get_field('testimony_cat')) ?>
 </section>
 <!-- end: Testimonial -->
 <!--call-to-action dark -->

@@ -240,3 +240,125 @@ function create_taxonomies_testimoni()
     'rewrite' => array('slug' => 'testimoni-cats'),
   ));
 }
+
+
+function create_post_types_peneliti()
+{
+  // Slider post type 
+  $label = array(
+    'name'         => __('Peneliti', 'tjd-framework'),
+    'singular_name'   => __('peneliti', 'tjd-framework'),
+    'add_new'       => _x('Add New', 'peneliti', 'tjd-framework'),
+    'add_new_item'     => __('Add New peneliti', 'tjd-framework'),
+    'edit_item'     => __('Edit peneliti', 'tjd-framework'),
+    'new_item'       => __('New peneliti', 'tjd-framework'),
+    'view_item'     => __('View peneliti', 'tjd-framework'),
+    'search_items'     => __('Search peneliti', 'tjd-framework'),
+    'not_found'     => __('No peneliti found', 'tjd-framework'),
+    'not_found_in_trash' => __('No peneliti found in Trash', 'tjd-framework'),
+    'parent_item_colon' => ''
+  );
+  $args = array(
+    'labels'       => $label,
+    'description'     => __('All peneliti upload here', 'tjd-framework'),
+    'public'       => true,
+    'supports'      => array('title', 'thumbnail', 'editor'),
+    'query_var'     => true,
+    'rewrite'       => array('slug' => 'peneliti'),
+    'menu_icon'      => 'dashicons-smiley',
+    'show_in_nav_menus' => false,
+    'has_archive'     => true,
+    'menu_position'   => 20,
+  );
+  register_post_type('peneliti', $args);
+}
+add_action('init', 'create_post_types_peneliti');
+
+// Add taxonomies
+add_action('init', 'create_taxonomies_peneliti');
+
+function create_taxonomies_peneliti()
+{
+  // peneliti taxonomies
+  $peneliti_cats = array(
+    'name' => __('peneliti Categories', 'tjd-framework'),
+    'singular_name' => __('peneliti Category', 'tjd-framework'),
+    'search_items' =>  __('Search peneliti Categories', 'tjd-framework'),
+    'all_items' => __('All penelitis Categories', 'tjd-framework'),
+    'parent_item' => __('Parent peneliti Category', 'tjd-framework'),
+    'parent_item_colon' => __('Parent peneliti Category:', 'tjd-framework'),
+    'edit_item' => __('Edit peneliti Category', 'tjd-framework'),
+    'update_item' => __('Update peneliti Category', 'tjd-framework'),
+    'add_new_item' => __('Add New peneliti Category', 'tjd-framework'),
+    'new_item_name' => __('New peneliti Category Name', 'tjd-framework'),
+    'choose_from_most_used'  => __('Choose from the most used peneliti categories', 'tjd-framework')
+  );
+
+  register_taxonomy('peneliti_cats', 'peneliti', array(
+    'hierarchical' => true,
+    'labels' => $peneliti_cats,
+    'query_var' => true,
+    'rewrite' => array('slug' => 'peneliti-cats'),
+  ));
+}
+
+
+function create_post_types_produk()
+{
+  // Slider post type 
+  $label = array(
+    'name'         => __('Produk', 'tjd-framework'),
+    'singular_name'   => __('produk', 'tjd-framework'),
+    'add_new'       => _x('Add New', 'produk', 'tjd-framework'),
+    'add_new_item'     => __('Add New produk', 'tjd-framework'),
+    'edit_item'     => __('Edit produk', 'tjd-framework'),
+    'new_item'       => __('New produk', 'tjd-framework'),
+    'view_item'     => __('View produk', 'tjd-framework'),
+    'search_items'     => __('Search produk', 'tjd-framework'),
+    'not_found'     => __('No produk found', 'tjd-framework'),
+    'not_found_in_trash' => __('No produk found in Trash', 'tjd-framework'),
+    'parent_item_colon' => ''
+  );
+  $args = array(
+    'labels'       => $label,
+    'description'     => __('All produk upload here', 'tjd-framework'),
+    'public'       => true,
+    'supports'      => array('title', 'thumbnail', 'editor'),
+    'query_var'     => true,
+    'rewrite'       => array('slug' => 'produk-kami'),
+    'menu_icon'      => 'dashicons-smiley',
+    'show_in_nav_menus' => false,
+    'has_archive'     => true,
+    'menu_position'   => 10,
+  );
+  register_post_type('produk', $args);
+}
+add_action('init', 'create_post_types_produk');
+
+// Add taxonomies
+add_action('init', 'create_taxonomies_produk');
+
+function create_taxonomies_produk()
+{
+  // produk taxonomies
+  $produk_cats = array(
+    'name' => __('produk Categories', 'tjd-framework'),
+    'singular_name' => __('produk Category', 'tjd-framework'),
+    'search_items' =>  __('Search produk Categories', 'tjd-framework'),
+    'all_items' => __('All produks Categories', 'tjd-framework'),
+    'parent_item' => __('Parent produk Category', 'tjd-framework'),
+    'parent_item_colon' => __('Parent produk Category:', 'tjd-framework'),
+    'edit_item' => __('Edit produk Category', 'tjd-framework'),
+    'update_item' => __('Update produk Category', 'tjd-framework'),
+    'add_new_item' => __('Add New produk Category', 'tjd-framework'),
+    'new_item_name' => __('New produk Category Name', 'tjd-framework'),
+    'choose_from_most_used'  => __('Choose from the most used produk categories', 'tjd-framework')
+  );
+
+  register_taxonomy('produk_cats', 'produk', array(
+    'hierarchical' => true,
+    'labels' => $produk_cats,
+    'query_var' => true,
+    'rewrite' => array('slug' => 'produk-cats'),
+  ));
+}

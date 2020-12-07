@@ -17,13 +17,13 @@ function labip_theme_support()
 	add_theme_support('custom-logo');
 	add_theme_support('post-thumbnails');
 
-
 	add_theme_support('post-thumbnails');
 	add_image_size('large', 800, 600, true);
 	add_image_size('medium', 600, 400, true);
 	add_image_size('headline', 595, 397, true);
 	add_image_size('small', 525, 350, true);
 	add_image_size('thumbnail', 150, 150, true);
+	add_image_size('micro-thumb', 70, 70, true);
 
 	add_filter('use_default_gallery_style', '__return_false');
 }
@@ -88,7 +88,7 @@ function labip_register_styles()
 {
 	$version = wp_get_theme()->get('Version');
 	wp_enqueue_style('labip-style-css', get_template_directory_uri() . "/css/style.css", array(), $version, 'all');
-	//	wp_enqueue_style('labip-plugin-css', get_template_directory_uri() . "/css/plugins.css", array(), '1.0', 'all');
+	wp_enqueue_style('labip-plugin-css', get_template_directory_uri() . "/css/plugins.css", array(), '1.0', 'all');
 	wp_enqueue_style('labip-custom-css', get_template_directory_uri() . "/css/custom.css", array(), '1.0', 'all');
 }
 
@@ -96,10 +96,8 @@ add_action('wp_enqueue_scripts', 'labip_register_styles');
 
 function labip_register_scripts()
 {
-	wp_enqueue_script('labip-jquery-js', get_template_directory_uri() . "/js/jquery.js", array(), '1.0', true);
-	wp_enqueue_script('labip-plugin-js', get_template_directory_uri() . "/js/plugins.js", array(), '1.0', true);
-	// wp_enqueue_script('labip-function-js', get_template_directory_uri() . "/js/functions.js", array(), '1.0', true);
-	wp_enqueue_script('labip-custom-js', get_template_directory_uri() . "/js/custom.js", array(), '1.0', true);
+	wp_enqueue_script('labip-plugin-js', get_template_directory_uri() . "/js/plugins.js", array('jquery'), '1.0', true);
+	wp_enqueue_script('labip-function-js', get_template_directory_uri() . "/js/functions.js", array(), '1.0', true);
 }
 
 add_action('wp_enqueue_scripts', 'labip_register_scripts');
@@ -211,24 +209,6 @@ if (function_exists('register_sidebar')) {
 	));
 }
 
-add_filter('wp_enqueue_scripts', 'tjd_theme_scripts', 0);
-function tjd_theme_scripts()
-{
-	// CSS
-	//wp_enqueue_style( 'icomoon', get_template_directory_uri() . '/fonts/icomoon/style.css', array(), '1.0' );
-	wp_enqueue_style('plugins-css', get_template_directory_uri() . '/css/plugins.css', array(), '1.0');
-	wp_enqueue_style('main', get_template_directory_uri() . '/css/style.css', array(), '1.0');
-	wp_enqueue_style('custom', get_template_directory_uri() . '/css/custom.css', array(), '1.0');
-	//	wp_enqueue_style('responsive', get_template_directory_uri() . '/css/responsive.css', array(), '1.0');
-
-	// JS
-	wp_register_script('plugins', get_template_directory_uri() . '/js/plugins.js', array('jquery'), '1.0', true);
-	wp_register_script('functions', get_template_directory_uri() . '/js/functions.js', array('jquery'), '1.0', true);
-
-	wp_enqueue_script('plugins');
-	wp_enqueue_script('functions');
-}
-
 // latest post
 function tjd_latest_post($number, $thumb)
 {
@@ -242,9 +222,7 @@ function tjd_latest_post($number, $thumb)
 			$the_query = new WP_Query('post_status=publish&post_type=post&posts_per_page=' . $number);
 
 			if ($thumb == 1) {
-
 				while ($the_query->have_posts()) : $the_query->the_post();
-
 			?>
 
 					<div class="post-thumbnail-entry">
@@ -260,9 +238,6 @@ function tjd_latest_post($number, $thumb)
 						<div class="post-thumbnail-content">
 							<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php echo short_title(8); ?></a>
 							<span class="post-date"><i class="fas fa-calendar-alt"> </i><?php echo get_the_date(); ?></span>
-							<!-- <span class="post-category"><i class="fa fa-tag"></i> <?php foreach ((get_the_category()) as $category) {
-																																						echo $category->cat_name . ' ';
-																																					} ?></span>-->
 						</div>
 					</div>
 
@@ -559,6 +534,61 @@ function the_suksesstory($cat)
 		<!-- end: Testimonials -->
 	<?php endif; ?>
 	<?php $_posts = null;
+	wp_reset_query(); ?>
+<?php
+}
+
+function produk($cat = null)
+{
+
+?>
+	<?php
+	$args = array(
+		'post_status'   => 'publish',
+		'post_type'     => 'produk',
+		'posts_per_page' => 10,
+
+	);
+
+	$the_query = null;
+	$the_query = new WP_Query();
+	$the_query->query($args);
+
+	?>
+	<!-- produkals -->
+	<div id="portfolio" class="grid-layout portfolio-3-columns" data-margin="40">
+
+		<?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
+			<div class="portfolio-item light-bg no-overlay img-zoom ct-photography ct-marketing ct-media">
+				<div class="portfolio-item-wrap">
+					<div class="portfolio-image">
+						<a href="<?php the_permalink(); ?>">
+							<?php
+							if (has_post_thumbnail()) {
+								the_post_thumbnail('small');
+							} else {
+							?>
+								<img src="<?php bloginfo('template_directory'); ?>/images/blog/17.jpg" alt="<?php the_field('nama_produk'); ?>">
+							<?php
+							}
+							?>
+						</a>
+					</div>
+					<div class="portfolio-description">
+						<a href="portfolio-page-grid-gallery.html">
+							<h3><?php echo short_title(15); ?></h3>
+							<p><?php echo get_field('karya'); ?></p>
+							<span style="font-weight:700;">Rp <?php echo number_format(get_field('harga')); ?></span>
+						</a>
+					</div>
+				</div>
+			</div>
+
+
+		<?php endwhile; ?>
+		<!-- end: produkals item-->
+	</div>
+	<?php $the_query = null;
 	wp_reset_query(); ?>
 <?php
 }

@@ -4,63 +4,83 @@ get_header();
 include('inc/heading.php');
 ?>
 
-<!-- Pilih Layanan -->
-<section>
+
+
+<!-- Kisah Kami -->
+<section class="content">
     <div class="container">
+        <div class="heading-text heading-section">
+            <h3 style="font-weight: bold;">Mahasiswa</h3>
+        </div>
+        <div class="row icon-boxes">
 
-        <div class="tabs tabs-vertical">
-            <div class="row no-gutters mx-auto">
-                <div class="col-lg-6 pb-3">
-                    <ul class="nav flex-column nav-tabs" id="myTab4" role="tablist" aria-orientation="vertical">
-                        <li class="nav-item nav-pills-custom">
-                            <a class="nav-link active text-bold py-3 h3" id="home-tab" data-toggle="tab" href="#home4" role="tab" aria-controls="home" aria-selected="true"><?php echo get_field('jenis_layanan_1') ?></a>
-                        </li>
-                        <li class="nav-item nav-pills-custom">
-                            <a class="nav-link text-bold py-3 h3" id="profile-tab" data-toggle="tab" href="#profile4" role="tab" aria-controls="profile" aria-selected="false"><?php echo get_field('jenis_layanan_2') ?></a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-lg-6 layanan-tabs">
-                    <div class="p-5 shadow">
-                        <div class="tab-content" id="v-pills-tabContent">
-                        </div>
-                        <div class="tab-content p-30" id="myTabContent4">
-                            <div class="tab-pane fade show active" id="home4" role="tabpanel" aria-labelledby="home-tab">
-                                <p class="h3 text-bold text-danger">Pilih Layanan</p>
-                                <?php
-                                $layanan = get_field('keterangan_layanan_1');
-                                $layanan2 = get_field('keterangan_layanan_2');
-                                if ($layanan) { ?>
-                                    <?php
-                                    foreach ($layanan as $post) :
-                                    ?>
-                                        <a href="<?php echo get_the_permalink($post->ID); ?>"><?php echo get_the_title($post->ID); ?></a><br>
-                                    <?php endforeach; ?>
-                                    <?php
-                                    wp_reset_postdata(); ?>
-                                <?php } ?>
-                            </div>
-                            <div class="tab-pane fade" id="profile4" role="tabpanel" aria-labelledby="profile-tab">
-                                <p class="h3 text-bold text-danger">Pilih Layanan</p>
+            <?php
+            $layanan = get_field('keterangan_layanan_1');
+            if ($layanan) { ?>
+                <?php
+                foreach ($layanan as $post) :
+                ?>
 
-                                <?php if ($layanan2) { ?>
-                                    <?php
-                                    foreach ($layanan2 as $post2) :
-                                    ?>
-                                        <a href="<?php echo get_the_permalink($post2->ID); ?>"><?php echo get_the_title($post2->ID); ?></a><br>
-                                    <?php endforeach; ?>
-                                    <?php
-                                    wp_reset_postdata(); ?>
-                                <?php } ?>
-                            </div>
+                    <div class="icon-boxx col-md-4 col-6">
+                        <img width="60" height="60" src="<?php echo get_field('icon', $post->ID) ?>">
+                        <div class="icon-box-content">
+                            <a href="<?php echo get_the_permalink($post->ID); ?>">
+                                <h3><?php echo get_the_title($post->ID); ?></h3>
+                            </a>
+                            <p class="pb-5"><?php echo excerpt('15') ?></p>
                         </div>
                     </div>
-                </div>
-            </div>
+
+                <?php endforeach; ?>
+                <?php
+                wp_reset_postdata(); ?>
+            <?php } ?>
+
+
         </div>
     </div>
 </section>
-<!-- End: Pilih Layanan -->
+
+<!-- Kisah Kami -->
+<section class="content">
+    <div class="container">
+        <div class="heading-text heading-section">
+            <h3 style="font-weight: bold;">Dosen</h3>
+        </div>
+        <div class="row icon-boxes">
+
+            <?php
+            $layanan2 = get_field('keterangan_layanan_2');
+            if ($layanan2) { ?>
+                <?php
+                foreach ($layanan2 as $post) :
+                ?>
+
+                    <div class="icon-boxx col-md-4 col-6">
+                        <img width="60" height="60" src="<?php echo get_field('icon', $post->ID) ?>">
+                        <div class="icon-box-content">
+                            <a href="<?php echo get_the_permalink($post->ID); ?>">
+                                <h3><?php echo get_the_title($post->ID); ?></h3>
+                            </a>
+                            <p class="pb-3"><?php echo excerpt('15') ?></p>
+                            <a href="<?php echo get_the_permalink($post->ID); ?>">
+                                Selengkapnya
+                            </a>
+                        </div>
+                    </div>
+
+                <?php endforeach; ?>
+                <?php
+                wp_reset_postdata(); ?>
+            <?php } ?>
+
+
+        </div>
+    </div>
+
+</section>
+
+
 
 <!-- BLOG -->
 <section class="content">

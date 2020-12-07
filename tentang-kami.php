@@ -1,29 +1,8 @@
 <?php /* Template Name: Tentang Kami*/ ?>
 <?php
 get_header();
+include('inc/heading.php');
 ?>
-
-<!-- SECTION IMAGE FULLSCREEN -->
-<div class="row" style="background-image:url(<?php echo get_field('gambar_heading') ?>); background-size: cover; background-position: center center;">
-    <div class="col-lg-6 mx-0 px-0">
-    </div>
-    <div class="col-lg-6 mx-0 px-0">
-        <section class="fullscreen background-yellow">
-            <div class="">
-                <div class="col-10 ml-5 mt-5 text-black">
-                    <h2 class="margin-bottom-0">
-                        <?php echo get_field('judul_heading') ?>
-                    </h2>
-                    <p>
-                        <?php echo get_field('deskripsi_judul') ?>
-                    </p>
-                    <div data-animate="fadeInUp" data-animate-delay="900"></div>
-                </div>
-            </div>
-        </section>
-    </div>
-</div>
-<!-- end: SECTION IMAGE FULLSCREEN -->
 
 <!-- Tentang Kami -->
 <section style="background-color: #FCFCFC;">
@@ -44,7 +23,7 @@ get_header();
 <!-- END Tentang Kami -->
 
 <!-- Kisah Kami -->
-<section>
+<section style="background-color:#ececec;padding-bottom:100px;">
     <div class="container">
         <div class="heading-text heading-section">
             <h3 style="font-weight: bold;"><?php echo get_field('judul_kisah_kami') ?></h3>
@@ -57,6 +36,7 @@ get_header();
             </div>
         </div>
     </div>
+    <div class="shape-divider" data-style="3" data-height="120"></div>
 </section>
 <!-- END Kisah Kami -->
 

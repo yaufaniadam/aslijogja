@@ -38,7 +38,7 @@
                                         ?>
                                     </span>
                                     <div class="post-meta-share">
-                                        <?php echo do_shortcode('[Sassy_Social_Share]'); ?>
+                                        <?php echo do_shortcode('[ssba]'); ?>
                                     </div>
                                 </div>
                                 <?php the_content(); ?>

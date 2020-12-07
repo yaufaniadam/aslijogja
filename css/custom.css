@@ -18,6 +18,11 @@ Author: Hafizh Pratama
     color: #3d3d3d;
 }
 
+.container p a {
+    color:#c00000;
+    text-decoration:underline;
+}
+
 input:not([type="checkbox"]):not([type="radio"]), select {
     line-height: 18px;
     padding: 10px 16px;
