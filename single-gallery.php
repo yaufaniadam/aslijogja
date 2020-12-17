@@ -19,7 +19,7 @@ $jenis = get_field('jenis');
   </div>
 </section>
 <!-- Page Content -->
-<section id="page-content" class="sidebar-right">
+<section id="page-content">
   <div class="container">
     <div class="row">
       <!-- content -->
@@ -58,26 +58,27 @@ $jenis = get_field('jenis');
               <?php endforeach;
               endif;
             } else { ?>
-              <?php echo get_field('video'); ?>
+
               <div class="post-video">
-                <iframe width="560" height="315" src="<?php echo get_field('video'); ?>" frameborder="0" allowfullscreen></iframe>
+                <?php echo get_field('video'); ?>
+              <?php } // end jenis
+              ?>
+
+              <div class="post-item-description mt-3">
+                <?php echo get_field('deskripsi'); ?>
               </div>
-            <?php } // end jenis
-            ?>
+              <!-- end: Gallery -->
+              </div>
+
+              <!-- Footer -->
 
             </div>
-            <!-- end: Gallery -->
+            <!-- end: content -->
+            <!-- Sidebar-->
+            <?php// get_sidebar(); ?>
+            <!-- end: Sidebar-->
         </div>
-
-        <!-- Footer -->
-
       </div>
-      <!-- end: content -->
-      <!-- Sidebar-->
-      <?php// get_sidebar(); ?>
-      <!-- end: Sidebar-->
-    </div>
-  </div>
 </section>
 <!-- end: Page Content -->
 <!-- Footer -->
