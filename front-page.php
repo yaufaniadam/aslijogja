@@ -68,29 +68,8 @@ get_header();
         $post_vid_id = get_field('video_embed')->ID;
         $vid = get_field('video', $post_vid_id);
         ?>
-        <div id="portfolio" class="grid-layout portfolio-5-columns" data-margin="0">
-            <!-- portfolio item -->
-            <div class="portfolio-item large-width img-zoom ct-photography ct-media ct-branding ct-marketing ct-webdesign">
-                <div class="portfolio-item-wrap">
-                    <div class="portfolio-image">
+        <div id="portfolio" class="grid-layout portfolio-5-columns" data-margin="20">
 
-                        <?php
-                        if (has_post_thumbnail($post_vid_id)) {
-
-                            echo get_the_post_thumbnail($post_vid_id, 'small');
-                        } else {
-                        ?>
-                            <img src="<?php bloginfo('template_directory'); ?>/images/blog/17.jpg" alt="<?php the_title(); ?>">
-                        <?php
-                        }
-                        ?>
-
-                    </div>
-                    <div class="portfolio-description">
-                        <a title="Paper Pouch!" data-lightbox="iframe" href="<?php echo  $vid; ?>"><i class="icon-play"></i></a>
-                    </div>
-                </div>
-            </div>
             <!-- end: portfolio item -->
             <?php
             $foto = get_field('foto');
@@ -107,7 +86,57 @@ get_header();
                                     echo get_the_post_thumbnail($foto->ID, 'small');
                                 } else {
                                 ?>
-                                    <img src="<?php bloginfo('template_directory'); ?>/images/blog/17.jpg" alt="<?php the_title(); ?>">
+                                    <img src="<?php bloginfo('template_directory'); ?>/images/noimage.jpg" alt="<?php the_title(); ?>">
+                                <?php
+                                }
+                                ?>
+                            </a>
+                        </div>
+                        <div class="portfolio-description">
+                            <a href="<?php echo $foto->guid ?>">
+                                <h3><?php echo $foto->post_title ?></h3>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            <?php } // end foreach 
+            ?>
+        </div>
+    </div>
+    <div class="shape-divider" data-style="7" data-height="100"></div>
+</section>
+<!-- end: PORTFOLIO -->
+
+<section style="background-color: #eaeaea;padding-bottom:130px">
+    <div class="container">
+        <div class="heading-text heading-section">
+            <h3><?php echo get_field('judul_gallery_video') ?></h3>
+            <span class="lead"><?php echo get_field('keterangan_gallery_video') ?></span>
+        </div>
+        <?php
+        $post_vid_id = get_field('video_embed')->ID;
+        $vid = get_field('video', $post_vid_id);
+        ?>
+        <div id="portfolio" class="grid-layout portfolio-5-columns" data-margin="20">
+
+            <!-- end: portfolio item -->
+            <?php
+            $foto = get_field('video_embed');
+
+            foreach ($foto as $foto) {
+            ?>
+                <!-- portfolio item -->
+                <div class="portfolio-item img-zoom ct-photography ct-media ct-branding ct-Media">
+                    <div class="portfolio-item-wrap">
+                        <div class="portfolio-image">
+                            <a href="#">
+                                <?php
+                                if (has_post_thumbnail($foto->ID)) {
+                                    echo get_the_post_thumbnail($foto->ID, 'small');
+                                } else {
+                                ?>
+                                    <img src="<?php bloginfo('template_directory'); ?>/images/noimage.jpg" alt="<?php the_title(); ?>">
                                 <?php
                                 }
                                 ?>
