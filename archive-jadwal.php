@@ -29,33 +29,12 @@ $bg_title = get_bloginfo('template_directory') . "/images/bg-ip.jpg";
                             <!-- Post single item-->
                             <div class="post-item">
                                 <div class="post-item-wrap">
-                                    <div class="post-image">
-                                        <a href="#">
-                                            <?php
-                                            if (has_post_thumbnail()) {
-                                                the_post_thumbnail('large');
-                                            } else {
-                                            ?>
-                                                <a href="<?php the_permalink(); ?>">
-                                                    <img src="<?php bloginfo('template_directory'); ?>/images/noimage.jpg" alt="<?php the_title(); ?>" />
-                                                </a>
-                                            <?php } ?>
-                                        </a>
 
-                                    </div>
                                     <div class="post-item-description">
-                                        <span class="post-meta-date"><i class="icon-calendar"></i> <?php echo get_the_date('j M Y'); ?></span>
-
-                                        <span class="post-meta-date"><i class="icon-user"></i>
-                                            <?php global $post;
-                                            $author_id = $post->post_author;
-                                            ?>
-
-                                            <?php echo get_the_author_meta('display_name', $author_id); ?></span>
 
                                         <span class="post-meta-category"><i class="icon-tag"></i>
                                             <?php
-                                            $terms = get_the_terms($post->ID, 'category');
+                                            $terms = get_the_terms($post->ID, 'jadwal_cats');
                                             if ($terms) :
                                                 foreach ($terms as $category) {
                                             ?>
@@ -70,11 +49,9 @@ $bg_title = get_bloginfo('template_directory') . "/images/bg-ip.jpg";
                                         <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?>
                                             </a></h2>
                                         <p><i class="fas fa-calendar"></i>
-                                            <?php echo get_field('tanggal') ?></p>
-                                        <p><i class="fas fa-clock"></i>
+                                            <?php echo get_field('tanggal') ?> | <i class="fas fa-clock"></i>
                                             <?php echo get_field('waktu') ?></p>
-                                        <p><i class="fas fa-map-marker"></i>
-                                            <?php echo get_field('tempat') ?></p>
+
                                         <a href="<?php the_permalink(); ?>" class="item-link">Selengkapnya <i class="icon-chevron-right"></i></a>
                                     </div>
                                 </div>
