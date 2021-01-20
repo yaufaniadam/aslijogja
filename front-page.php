@@ -58,7 +58,7 @@ get_header();
 </section>
 <!-- END WHAT WE DO -->
 <!-- Layanan -->
-<section style="background-color: #eaeaea;padding-bottom:130px">
+<section style="background-color: #eaeaea;padding-bottom:30px">
     <div class="container">
         <div class="heading-text heading-section">
             <h3><?php echo get_field('judul_gallery') ?></h3>
@@ -104,7 +104,7 @@ get_header();
             ?>
         </div>
     </div>
-    <div class="shape-divider" data-style="7" data-height="100"></div>
+    <!-- <div class="shape-divider" data-style="7" data-height="100"></div> -->
 </section>
 <!-- end: PORTFOLIO -->
 

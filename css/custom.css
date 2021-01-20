@@ -162,3 +162,32 @@ input:not([type="checkbox"]):not([type="radio"]), select {
         font-size: 14px;
     }
 }
+
+.post-item-description img.alignleft,
+.post-item-description div.wp-caption.alignleft {
+    float: left;
+    margin: 0 20px 0px 0;
+}
+.post-item-description img.alignright,
+.post-item-description div.wp-caption.alignright {
+    float: right;
+    margin: 0px 0px 0px 20px;
+}
+.post-item-description img.alignnone,
+.post-item-description div.wp-caption.alignnone {
+   width:auto;
+   display: block;
+   margin: 20px 0;
+}
+.post-item-description img.aligncenter,
+.post-item-description div.wp-caption.aligncenter {
+   width:auto;
+   display: block;
+   margin: 20px auto;
+}
+.post-item-description p.wp-caption-text {
+    font-size: 14px !important;
+    color:#9b9b9b;
+    padding:10px 0;
+    font-style: italic;
+}

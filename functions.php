@@ -258,7 +258,8 @@ function tjd_latest_post($number, $thumb)
 						$class = 'normal';
 					} ?>
 					<li class="<?php echo $class; ?>"><span class="reading"><?php _e('On read', 'tjd-framework'); ?></span><a href="<?php echo get_the_permalink(); ?>"><?php the_title(); ?></a>
-						<span class="post-date"><?php echo get_the_date('d F, Y'); ?></span></li>
+						<span class="post-date"><?php echo get_the_date('d F, Y'); ?></span>
+					</li>
 
 			<?php endwhile;
 				echo "</ul>";
@@ -347,14 +348,12 @@ function the_berita($cats = null)
 
 	<?php if ($_posts->have_posts()) : ?>
 
-
-
 		<?php while ($_posts->have_posts()) : $_posts->the_post(); ?>
 
 			<div class="post-item border">
 				<div class="post-item-wrap">
 					<div class="post-image">
-						<a href="#">
+						<a href="<?php the_permalink(); ?>" title="<?php echo short_title(8); ?>">
 							<div class="img-style" style="background-image: url(<?php the_post_thumbnail_url(); ?>); ">
 							</div>
 						</a>

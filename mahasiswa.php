@@ -27,7 +27,7 @@ include('inc/heading.php');
                             <a href="<?php echo get_the_permalink($post->ID); ?>">
                                 <h3><?php echo get_the_title($post->ID); ?></h3>
                             </a>
-                            <p class="pb-5"><?php echo excerpt('15') ?></p>
+                            <p class="pb-3"><?php echo get_field('deskripsi_singkat', $post->ID) ?></p>
                         </div>
                     </div>
 
@@ -62,10 +62,8 @@ include('inc/heading.php');
                             <a href="<?php echo get_the_permalink($post->ID); ?>">
                                 <h3><?php echo get_the_title($post->ID); ?></h3>
                             </a>
-                            <p class="pb-3"><?php echo excerpt('15') ?></p>
-                            <a href="<?php echo get_the_permalink($post->ID); ?>">
-                                Selengkapnya
-                            </a>
+                            <p class="pb-3"><?php echo get_field('deskripsi_singkat', $post->ID) ?></p>
+
                         </div>
                     </div>
 

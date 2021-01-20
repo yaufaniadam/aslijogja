@@ -57,23 +57,25 @@ $jenis = get_field('jenis');
 
               <?php endforeach;
               endif;
-            } else { ?>
-
-              <div class="post-video">
-                <?php echo get_field('video'); ?>
-              <?php } // end jenis
               ?>
-
-              <div class="post-item-description mt-3">
-                <?php echo get_field('deskripsi'); ?>
-              </div>
-              <!-- end: Gallery -->
-              </div>
-
-              <!-- Footer -->
-
             </div>
             <!-- end: content -->
+          <?php } else { ?>
+
+            <div class="post-video">
+              <?php echo get_field('video'); ?>
+            <?php } // end jenis
+            ?>
+
+            <div class="post-item-description mt-3">
+              <?php echo get_field('deskripsi'); ?>
+            </div>
+            <!-- end: Gallery -->
+            </div>
+
+            <!-- Footer -->
+
+
             <!-- Sidebar-->
             <?php// get_sidebar(); ?>
             <!-- end: Sidebar-->
