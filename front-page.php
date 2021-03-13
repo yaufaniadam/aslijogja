@@ -62,7 +62,7 @@ get_header();
     <div class="container">
         <div class="heading-text heading-section">
             <h3><?php echo get_field('judul_gallery') ?></h3>
-            <span class="lead"><?php echo get_field('keterangan_gallery') ?></span>
+            <!-- <span class="lead"><?php echo get_field('keterangan_gallery') ?></span> -->
         </div>
         <?php
         $post_vid_id = get_field('video_embed')->ID;
@@ -112,42 +112,32 @@ get_header();
     <div class="container">
         <div class="heading-text heading-section">
             <h3><?php echo get_field('judul_gallery_video') ?></h3>
-            <span class="lead"><?php echo get_field('keterangan_gallery_video') ?></span>
+            <!-- <span class="lead"><?php echo get_field('keterangan_gallery_video') ?></span> -->
         </div>
         <?php
         $post_vid_id = get_field('video_embed')->ID;
         $vid = get_field('video', $post_vid_id);
         ?>
-        <div id="portfolio" class="grid-layout portfolio-5-columns" data-margin="20">
+        <div class="row">
 
             <!-- end: portfolio item -->
             <?php
             $foto = get_field('video_embed');
 
+
+
             foreach ($foto as $foto) {
             ?>
-                <!-- portfolio item -->
-                <div class="portfolio-item img-zoom ct-photography ct-media ct-branding ct-Media">
-                    <div class="portfolio-item-wrap">
-                        <div class="portfolio-image">
-                            <a href="#">
-                                <?php
-                                if (has_post_thumbnail($foto->ID)) {
-                                    echo get_the_post_thumbnail($foto->ID, 'small');
-                                } else {
-                                ?>
-                                    <img src="<?php bloginfo('template_directory'); ?>/images/noimage.jpg" alt="<?php the_title(); ?>">
-                                <?php
-                                }
-                                ?>
-                            </a>
-                        </div>
-                        <div class="portfolio-description">
-                            <a href="<?php echo $foto->guid ?>">
-                                <h3><?php echo $foto->post_title ?></h3>
-                            </a>
-                        </div>
-                    </div>
+                <div class="col-md-4 mb-4">
+                    <?php
+                    $vid = get_field('video', $foto->ID);
+                    if ($vid) {
+                        $vid = str_replace("/watch?v=", "/embed/", $vid);
+                    ?>
+                        <iframe width="1280" height="720" src="<?php echo $vid; ?>" allowfullscreen></iframe>
+                    <?php } else {
+                        echo 'Tautan rusak.';
+                    } ?>
                 </div>
 
             <?php } // end foreach 
