@@ -1,26 +1,35 @@
-<?php
+<?php get_header(); ?>
 
-get_header();
+<!-- Start of Main -->
+<main class="main">
+            <!-- Start of Breadcrumb -->
+            <nav class="breadcrumb-nav">
+                <div class="container">
+                    <ul class="breadcrumb bb-no">
+                        <li><a href="<?php bloginfo('url'); ?>">Home</a></li>
+                        <li>Error 404</li>
+                    </ul>
+                </div>
+            </nav>
+            <!-- End of Breadcrumb -->
 
-?>
-<!-- 404 PAGE -->
-<section class="m-t-80 p-b-150">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="page-error-404">404</div>
-            </div>
-            <div class="col-lg-6">
-                <div class="text-left">
-                    <h1 class="text-medium">Ooops, halaman tidak ditemukan!</h1>
-                    <p class="lead">Ada beberapa keungkinan: link yang Anda ketikkan salah, atau halaman sudah dihapus.</p>
-                    <div class="seperator m-t-20 m-b-20"></div>
+            <!-- Start of Page Content -->
+            <div class="page-content error-404d pt-5 pb-5">
+                <div class="container">
+                    <div class="banner pt-5 pb-5">                       
+                        <div class="banner-content text-center">
+                            <h2 class="banner-title">
+                                <span style="color:red;">Oops!!!</span> Error 404.
+                            </h2>
+                            <p class="text-dark">Halaman yang Anda cari tidak ditemukan. </p>
+                            <a href="<?php bloginfo('url'); ?>" class="btn btn-dark btn-rounded btn-icon-right">Kembali ke Home<i class="w-icon-long-arrow-right"></i></a>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-</section>
-<!-- end:  404 PAGE -->
-<?php
-get_footer();
-?>
+            <!-- End of Page Content -->
+        </main>
+        <!-- End of Main -->
+  
+
+<?php get_footer(); ?>

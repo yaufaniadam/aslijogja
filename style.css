@@ -1,9 +1,98 @@
 /*
-Theme Name: Laboratorium Ilmu Pemerintahan
-Theme URL: http://www.solusidesain.net
-Description: Theme Laboratorium Ilmu Pemerintahan UMY
+Theme Name: Asli Jogja
+Theme URL: http://www.aslijogja.com
+Description: Theme for Asl Jogja
 Author: Yaufani Adam
 Author URI: http://www.solusidesain.net
-Version: 1.9.3
-Tag: UMY 
+Version: 1.0
+Tag: responsive
 */
+
+
+/* social icon marketplace */
+
+
+element.style {
+}
+
+.marketplace-icon {
+    width: 32px;
+    height: 32px;
+    margin: 2px 0px 2px 0px;
+    line-height: 28px;
+    color: inherit;
+    transition: color .4s, border .4s, background-color .4s;
+    text-align: center;
+}
+
+.shopee {
+  background: url('assets/images/marketplace.png') left center no-repeat;
+  background-size: 155px;
+}
+.blibli {
+  background: url('assets/images/marketplace.png') -31px center no-repeat;
+  background-size: 155px;
+}
+.jdid {
+  background: url('assets/images/marketplace.png') center center no-repeat;
+  background-size: 155px;
+}
+.tokopedia {
+  background: url('assets/images/marketplace.png') -77px center no-repeat;
+  background-size: 135px;
+}
+.bukalapak {
+  background: url('assets/images/marketplace.png') -125px center no-repeat;
+  background-size: 155px;
+}
+
+/* pagenavi */
+.wp-pagenavi span {
+  color:#666666;
+  display:inline-block;
+  margin-right:10px;
+}
+.wp-pagenavi a {
+	padding: 5px 10px; margin: 0 2px;
+  border: 1px solid #ffffff;
+	 color: #0b9444; text-decoration: none;
+	 -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px;
+	}
+.wp-pagenavi a:hover {
+	color: #0b9444;
+	border: 1px solid #0b9444;
+	}
+.wp-pagenavi span.current { 
+  border: 1px solid #0b9444;padding: 4px 12px; margin: 0 2px;
+  -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px;
+}
+
+
+.post-content img.alignleft,
+.post-content div.wp-caption.alignleft {
+    float: left;
+    margin: 0 20px 0px 0;
+}
+.post-content img.alignright,
+.post-content div.wp-caption.alignright {
+    float: right;
+    margin: 0px 0px 0px 20px;
+}
+.post-content img.alignnone,
+.post-content div.wp-caption.alignnone {
+   width:auto;
+   display: block;
+   margin: 20px 0;
+}
+.post-content img.aligncenter,
+.post-content div.wp-caption.aligncenter {
+   width:auto;
+   display: block;
+   margin: 20px auto;
+}
+.post-content p.wp-caption-text {
+    font-size: 14px !important;
+    color:#9b9b9b;
+    padding:10px 0;
+    font-style: italic;
+}

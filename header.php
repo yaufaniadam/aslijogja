@@ -3,21 +3,210 @@
 
 <head>
     <meta charset="<?php bloginfo('charset'); ?>">
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta name="author" content="Laboratorium Ilmu Pemerintahan" />
+    <meta name="author" content="Asli Jogja" />
     <link rel="profile" href="http://gmpg.org/xfn/11">
     <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>">
     <title><?php wp_title('|', true, 'right'); ?></title>
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,700,900|Open+Sans:400,700" rel="stylesheet">
-    <meta name="google-site-verification" content="syyHsd8pyG_bVPCCaxDOQKw017AgT-K-pDnLH-WHHX0" />
+
+    <!-- WebFont.js -->
+    <script>
+        WebFontConfig = {
+            google: {
+                families: ['Roboto:400,500,600,700,800']
+            }
+        };
+        (function(d) {
+            var wf = d.createElement('script'),
+                s = d.scripts[0];
+            wf.src = '<?php bloginfo('template_url'); ?>/assets/js/webfont.js';
+            wf.async = true;
+            s.parentNode.insertBefore(wf, s);
+        })(document);
+    </script>
+
+    <link rel="preload" href="<?php bloginfo('template_url'); ?>/assets/vendor/fontawesome-free/webfonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="<?php bloginfo('template_url'); ?>/assets/vendor/fontawesome-free/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="<?php bloginfo('template_url'); ?>/assets/vendor/fontawesome-free/webfonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="<?php bloginfo('template_url'); ?>/assets/fonts/wolmart.ttf?png09e" as="font" type="font/ttf" crossorigin="anonymous">
+
     <?php wp_head(); ?>
 </head>
 
 <body>
+    <div class="page-wrapper">
+   <!-- Start of Header -->
+        <header class="header header-border">
+            <div class="header-top">
+                <div class="container">
+                    <div class="header-left">
+                        <p class="welcome-msg">Selamat Datang / Sugeng Rawuh!</p>
+                    </div>
+                    <div class="header-right">
+                        
+
+                        <!-- <a href="blog.html" class="d-lg-show">Hubungi Kami</a>
+                        <a href="contact-us.html" class="d-lg-show">Jadi Mitra</a>
+                        <a href="my-account.html" class="d-lg-show">Akun Saya</a> -->
+                        <a href="<?php bloginfo('url'); ?>/wp-login.php" class="d-lg-show login sign-in"><i class="w-icon-account"></i>Login</a>
+                        <span class="delimiter d-lg-show">/</span>
+                        <a href="<?php bloginfo('url'); ?>/daftar" class="ml-0 d-lg-show login register">Daftar</a>
+                    </div>
+                </div>
+            </div>
+            <!-- End of Header Top -->
+
+            <div class="header-middle">
+                <div class="container">
+                    <div class="header-left mr-md-4">
+                        <a href="#" class="mobile-menu-toggle  w-icon-hamburger">
+                        </a>
+                        <a href="<?php bloginfo('url'); ?>" class="logo ml-lg-0" title="kembali ke Home">
+                            <img src="<?php bloginfo('template_url'); ?>/assets/images/logo.png" alt="logo" width="144" height="45" />
+                        </a>
+                        <form method="get" action="#" class="header-search hs-expanded hs-round d-none d-md-flex input-wrapper">
+                            <div class="select-box">
+                                <select id="category" name="category">
+                                    <option value="">Semua Kategori</option>
+                                    <option value="4">Fashion</option>
+                                    <option value="5">Furniture</option>
+                                    <option value="6">Shoes</option>
+                                    <option value="7">Sports</option>
+                                    <option value="8">Games</option>
+                                    <option value="9">Computers</option>
+                                    <option value="10">Electronics</option>
+                                    <option value="11">Kitchen</option>
+                                    <option value="12">Clothing</option>
+                                </select>
+                            </div>
+                            <input type="text" class="form-control" name="search" id="search" placeholder="Cari produk atau UMKM" required />
+                            <button class="btn btn-search" type="submit"><i class="w-icon-search"></i>
+                            </button>
+                        </form>
+                    </div>
+                    <div class="header-right ml-4">
+
+                        <a class="wishlist label-down link d-xs-show" href="<?php bloginfo('url'); ?>/produk">
+                            <i class="w-icon-products"></i>
+                            <span class="wishlist-label d-lg-show">Produk</span>
+                        </a>                      
+
+                        <a class="compare label-down link d-xs-show" href="<?php bloginfo('url'); ?>/komunitas">
+                            <i class="w-icon-service"></i>
+                            <span class="compare-label d-lg-show">Komunitas</span>
+                        </a>
+
+                        <a class="compare label-down link d-xs-show" href="<?php bloginfo('url'); ?>/mitra-umkm">
+                            <i class="w-icon-vendor-store"></i>
+                            <span class="compare-label d-lg-show">UMKM</span>
+                        </a>
+                        
+                    </div>
+                </div>
+            </div>
+            <!-- End of Header Middle -->
+
+            <div class="header-bottom sticky-content fix-top sticky-header has-dropdown">
+                <div class="container">
+                    <div class="inner-wrap">
+                    <div class="header-left">
+                            <div class="dropdown category-dropdown has-border" data-visible="true">
+                                <a href="#" class="category-toggle text-dark" role="button" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="true" data-display="static"
+                                    title="Browse Categories">
+                                    <i class="w-icon-category"></i>
+                                    <span>Kategori</span>
+                                </a>
+
+                                <div class="dropdown-box">
+                                    <ul class="menu vertical-menu category-menu">
+                                        <li>
+                                            <a href="shop-fullwidth-banner.html">
+                                                <i class="w-icon-tshirt2"></i>Fashion
+                                            </a>
+                                            <ul class="megamenu">
+                                                <li>
+                                                    <h4 class="menu-title">Women</h4>
+                                                    <hr class="divider">
+                                                    <ul>
+                                                        <li><a href="shop-fullwidth-banner.html">New Arrivals</a>
+                                                        </li>
+                                                        <li><a href="shop-fullwidth-banner.html">Best Sellers</a>
+                                                        </li>
+                                                        <li><a href="shop-fullwidth-banner.html">Trending</a></li>
+                                                        <li><a href="shop-fullwidth-banner.html">Clothing</a></li>
+                                                        <li><a href="shop-fullwidth-banner.html">Shoes</a></li>
+                                                        <li><a href="shop-fullwidth-banner.html">Bags</a></li>
+                                                        <li><a href="shop-fullwidth-banner.html">Accessories</a>
+                                                        </li>
+                                                        <li><a href="shop-fullwidth-banner.html">Jewlery &
+                                                                Watches</a></li>
+                                                        <li><a href="shop-fullwidth-banner.html">Sale</a></li>
+                                                    </ul>
+                                                </li>
+                                               
+                                               
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a href="shop-fullwidth-banner.html">
+                                                <i class="w-icon-tshirt2"></i>Fashion
+                                            </a>
+                                        </li>                                       
+                                        <!-- <li>
+                                            <a href="shop-banner-sidebar.html"
+                                                class="font-weight-bold text-primary text-uppercase ls-25">
+                                                View All Categories<i class="w-icon-angle-right"></i>
+                                            </a>
+                                        </li> -->
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div class="header-right">
+                            <nav class="main-nav">
+                                <!-- <ul class="menu active-underline">
+                                    <li class="active">
+                                        <a href="demo1.html">Home</a>
+                                    </li>
+                                    <li>
+                                        <a href="shop-banner-sidebar.html">Produk</a>                                       
+                                    </li>
+                                    <li>
+                                        <a href="vendor-dokan-store.html">Inkubasi Bisnis</a>                                     
+                                    </li>
+                                    <li>
+                                        <a href="blog.html">Profil UMKM</a>                                       
+                                    </li>
+                                   
+                                </ul> -->
+                                <?php
+                                wp_nav_menu(
+                                    array(
+                                        'menu'              => 'header',
+                                        'theme_location'    => 'header',
+                                        'depth'             => 2,
+                                        'container'         => 'nav',
+                                        'container_id'      => 'top_menu',
+                                        'fallback_cb'       => 'wp_bootstrap_navwalker::fallback',
+                                        'walker'            => new WP_Bootstrap_Navwalker()
+                                    )
+                                )
+                                ?>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- End of Header -->
+
+        
+      
     <!-- Body Inner -->
-    <div class="body-inner">
+    <?php /* <div class="body-inner">
         <!-- Header -->
         <header id="header" data-transparent="true" data-responsive-fixed="true" class="light">
 
@@ -91,3 +280,5 @@
             </div>
         </header>
         <!-- end: Header -->
+
+        */
