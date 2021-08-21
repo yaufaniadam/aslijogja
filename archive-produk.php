@@ -49,7 +49,6 @@
                                 </div>
                                 <!-- End of Widget -->
 
-
                             </div>
                           
                             <!-- Start of Collapsible widget -->

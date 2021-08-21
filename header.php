@@ -44,11 +44,6 @@
                         <p class="welcome-msg">Selamat Datang / Sugeng Rawuh!</p>
                     </div>
                     <div class="header-right">
-                        
-
-                        <!-- <a href="blog.html" class="d-lg-show">Hubungi Kami</a>
-                        <a href="contact-us.html" class="d-lg-show">Jadi Mitra</a>
-                        <a href="my-account.html" class="d-lg-show">Akun Saya</a> -->
                         <a href="<?php bloginfo('url'); ?>/wp-login.php" class="d-lg-show login sign-in"><i class="w-icon-account"></i>Login</a>
                         <span class="delimiter d-lg-show">/</span>
                         <a href="<?php bloginfo('url'); ?>/daftar" class="ml-0 d-lg-show login register">Daftar</a>
@@ -65,22 +60,11 @@
                         <a href="<?php bloginfo('url'); ?>" class="logo ml-lg-0" title="kembali ke Home">
                             <img src="<?php bloginfo('template_url'); ?>/assets/images/logo.png" alt="logo" width="144" height="45" />
                         </a>
-                        <form method="get" action="#" class="header-search hs-expanded hs-round d-none d-md-flex input-wrapper">
-                            <div class="select-box">
-                                <select id="category" name="category">
-                                    <option value="">Semua Kategori</option>
-                                    <option value="4">Fashion</option>
-                                    <option value="5">Furniture</option>
-                                    <option value="6">Shoes</option>
-                                    <option value="7">Sports</option>
-                                    <option value="8">Games</option>
-                                    <option value="9">Computers</option>
-                                    <option value="10">Electronics</option>
-                                    <option value="11">Kitchen</option>
-                                    <option value="12">Clothing</option>
-                                </select>
-                            </div>
-                            <input type="text" class="form-control" name="search" id="search" placeholder="Cari produk atau UMKM" required />
+        
+                        <form method="get" id="s" action="<?php bloginfo('url'); ?>" class="header-search hs-expanded hs-round d-none d-md-flex input-wrapper">
+                            <input type="hidden" name="post_type[]" value="produk" />
+                            <input type="hidden" name="post_type[]" value="mitra" />                            
+                            <input type="text" name="s"  class="form-control" name="search" id="search" placeholder="Cari produk atau UMKM" required />
                             <button class="btn btn-search" type="submit"><i class="w-icon-search"></i>
                             </button>
                         </form>

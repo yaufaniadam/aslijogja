@@ -13,8 +13,15 @@
                                         height="45" />
                                 </a>
                                 <div class="widget-body">
-                                    <p class="widget-about-title">Hubungi Kami</p>
-                                    <a href="tel:18005707777" class="widget-about-call">0856 2564 1234</a>                                   
+                                    <p class="widget-about-title">Hotline</p>
+                                    <a href="tel:18005707777" class="widget-about-call mb-4"><i class="w-icon-hotline"></i> 0852 2564 1234</a>  
+<!--                                     
+                                    <div class="alamat">                                        
+                                        <p><i class="fas fa-map-marker-alt"></i> Gd. D Perpustakaan Lt. 3<br>
+                                        Kampus Terpadu Universitas Muhammadiyah Yogyakarta<br>
+                                        Jl. Brawijaya, Bantul, DI Yogyakarta</p>
+                                        <p><i class="fas fa-envelope"></i> aslijogja.com@gmail.com</p>
+                                    </div> -->
 
                                     <div class="social-icons social-icons-colored">
                                         <a href="#" class="social-icon social-facebook w-icon-facebook"></a>
@@ -27,41 +34,53 @@
                         </div>
                         <div class="col-lg-3 col-sm-6">
                             <div class="widget">
-                                <h3 class="widget-title">Company</h3>
-                                <ul class="widget-body">
-                                    <li><a href="about-us.html">About Us</a></li>
-                                    <li><a href="#">Team Member</a></li>
-                                    <li><a href="#">Career</a></li>
-                                    <li><a href="contact-us.html">Contact Us</a></li>
-                                    <li><a href="#">Affilate</a></li>
-                                    <li><a href="#">Order History</a></li>
-                                </ul>
+                                <h3 class="widget-title">Profil Kami</h3>
+                                <?php
+                                wp_nav_menu(
+                                    array(
+                                        'menu'              => 'footer1',
+                                        'theme_location'    => 'footer1',
+                                        'depth'             => 1,
+                                        'container'         => 'nav',
+                                        'container_id'      => 'footer1',
+                                        'container_class'      => 'widget-body',
+                                    )
+                                )
+                                ?>
                             </div>
                         </div>
                         <div class="col-lg-3 col-sm-6">
                             <div class="widget">
-                                <h4 class="widget-title">My Account</h4>
-                                <ul class="widget-body">
-                                    <li><a href="#">Track My Order</a></li>
-                                    <li><a href="cart.html">View Cart</a></li>
-                                    <li><a href="login.html">Sign In</a></li>
-                                    <li><a href="#">Help</a></li>
-                                    <li><a href="wishlist.html">My Wishlist</a></li>
-                                    <li><a href="#">Privacy Policy</a></li>
-                                </ul>
+                                <h4 class="widget-title">Komunitas</h4>
+                                <?php
+                                wp_nav_menu(
+                                    array(
+                                        'menu'              => 'footer2',
+                                        'theme_location'    => 'footer2',
+                                        'depth'             => 1,
+                                        'container'         => 'nav',
+                                        'container_id'      => 'footer2',
+                                        'container_class'      => 'widget-body',
+                                    )
+                                )
+                                ?>
                             </div>
                         </div>
                         <div class="col-lg-3 col-sm-6">
                             <div class="widget">
-                                <h4 class="widget-title">Customer Service</h4>
-                                <ul class="widget-body">
-                                    <li><a href="#">Payment Methods</a></li>
-                                    <li><a href="#">Money-back guarantee!</a></li>
-                                    <li><a href="#">Product Returns</a></li>
-                                    <li><a href="#">Support Center</a></li>
-                                    <li><a href="#">Shipping</a></li>
-                                    <li><a href="#">Term and Conditions</a></li>
-                                </ul>
+                                <h4 class="widget-title">Anggota</h4>
+                                <?php
+                                wp_nav_menu(
+                                    array(
+                                        'menu'              => 'footer3',
+                                        'theme_location'    => 'footer3',
+                                        'depth'             => 1,
+                                        'container'         => 'nav',
+                                        'container_id'      => 'footer3',
+                                        'container_class'      => 'widget-body',
+                                    )
+                                )
+                                ?>
                             </div>
                         </div>
                     </div>

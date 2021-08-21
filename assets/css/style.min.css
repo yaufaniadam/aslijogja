@@ -5592,7 +5592,7 @@ textarea {
   justify-content: center;
   flex-direction: column;
   height: 18rem;
-  background-color: #eee;
+  background: url("../images/bannerpage.jpg") center top no-repeat;
   text-align: center;
   text-transform: capitalize; }
 
@@ -5601,7 +5601,8 @@ textarea {
   font-weight: 700;
   letter-spacing: -.025em;
   line-height: 1.1;
-  margin-bottom: 0.2rem; }
+  margin-bottom: 0.2rem;
+  color: #ffffff; }
 
 .page-subtitle {
   margin-bottom: 0;
@@ -9338,8 +9339,7 @@ body .product-popup {
         transform: translateY(-50%); }
     .header-search.hs-expanded input.form-control {
       color: #666;
-      border-right: none;
-      border-left: none; }
+      border-right: none; }
     .header-search.hs-expanded .btn-search {
       display: flex;
       align-items: center;
@@ -9379,7 +9379,7 @@ body .product-popup {
   .header-search.hs-round.hs-simple input.form-control {
     border-radius: 3rem; }
   .header-search.hs-round.hs-expanded .form-control {
-    border-radius: 0; }
+    border-radius: 4px 0 0 4px; }
 
 .dir-up.hs-toggle .input-wrapper {
   top: auto;
@@ -9844,22 +9844,22 @@ body .product-popup {
         - Vertical Menu
         - Category Menu
 -----------------------------------------*/
-.menu {
+header .menu {
   display: flex;
   align-items: center; }
-  .menu a {
+  header .menu a {
     display: inline-block;
     color: inherit; }
-    .menu a:hover {
+    header .menu a:hover {
       color: #056839; }
-  .menu .menu-title {
+  header .menu .menu-title {
     margin-bottom: 2rem;
     font-size: 1.4rem;
     font-weight: 600;
     line-height: 1;
     letter-spacing: -0.025em;
     text-transform: uppercase; }
-  .menu .submenu {
+  header .menu .submenu {
     padding: 2rem 0;
     background: #fff;
     font-family: "Roboto", sans-serif;
@@ -9868,18 +9868,18 @@ body .product-popup {
     line-height: 1;
     letter-spacing: 0;
     color: #666666; }
-    .menu .submenu .has-submenu > a::after {
+    header .menu .submenu .has-submenu > a::after {
       content: '\f054';
       font-weight: 600;
       font-size: 0.9rem;
       transform: translateY(-50%); }
-  .menu li {
+  header .menu li {
     position: relative;
     line-height: 1; }
-    .menu li a {
+    header .menu li a {
       padding: 0.7rem 0 .8rem 0; }
-    .menu li ul,
-    .menu li .megamenu {
+    header .menu li ul,
+    header .menu li .megamenu {
       position: absolute;
       top: -9999px;
       left: 100%;
@@ -9890,24 +9890,24 @@ body .product-popup {
       opacity: 1;
       transition: transform .3s ease-out;
       transform: translate3d(0, -10px, 0); }
-    .menu li .megamenu {
+    header .menu li .megamenu {
       padding: 0 1rem; }
-    .menu li > .submenu {
+    header .menu li > .submenu {
       min-width: 21.5rem; }
-      .menu li > .submenu li {
+      header .menu li > .submenu li {
         padding: 0 1.9rem; }
-  .menu li:hover > .submenu,
-  .menu li:hover .megamenu,
-  .menu .show > .submenu,
-  .menu .show .megamenu {
+  header .menu li:hover > .submenu,
+  header .menu li:hover .megamenu,
+  header .menu .show > .submenu,
+  header .menu .show .megamenu {
     visibility: visible;
     top: -2rem;
     transform: translate3d(0, 0, 0); }
-  .menu > li {
+  header .menu > li {
     margin-right: 3rem; }
-    .menu > li:last-child {
+    header .menu > li:last-child {
       margin-right: 0; }
-    .menu > li > a {
+    header .menu > li > a {
       position: relative;
       padding: 1.8rem 0 1.7rem 0;
       font-weight: 600;
@@ -9915,26 +9915,26 @@ body .product-popup {
       letter-spacing: -0.009em;
       line-height: 1.1;
       text-transform: capitalize; }
-      .menu > li > a::after {
+      header .menu > li > a::after {
         margin-left: .6rem; }
-    .menu > li > .submenu,
-    .menu > li .megamenu {
+    header .menu > li > .submenu,
+    header .menu > li .megamenu {
       left: -1.5rem; }
-    .menu > li:hover > a:not(.menu-title), .menu > li.active > a:not(.menu-title) {
+    header .menu > li:hover > a:not(.menu-title), header .menu > li.active > a:not(.menu-title) {
       color: #056839; }
-    .menu > li:hover > .submenu,
-    .menu > li:hover .megamenu, .menu > li.show > .submenu,
-    .menu > li.show .megamenu {
+    header .menu > li:hover > .submenu,
+    header .menu > li:hover .megamenu, header .menu > li.show > .submenu,
+    header .menu > li.show .megamenu {
       top: 100%; }
-  .menu .has-submenu > a {
+  header .menu .has-submenu > a {
     display: block;
     position: relative; }
-  .menu > .has-submenu > a::after {
+  header .menu > .has-submenu > a::after {
     margin-top: 1px;
     right: -16px; }
-  .menu.no-arrow > li > a::after {
+  header .menu.no-arrow > li > a::after {
     content: none; }
-  .menu .megamenu ul {
+  header .menu .megamenu ul {
     position: static;
     box-shadow: none;
     visibility: visible;

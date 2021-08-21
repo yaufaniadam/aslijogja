@@ -75,7 +75,9 @@ function aslijogja_menus()
 	$locations = array(
 		'topbar'   => __('Top Bar Menu', 'tjd-framework'),
 		'header'   => __('Header Menu', 'tjd-framework'),
-		'footer'   => __('Footer menu', 'tjd-framework'),
+		'footer1'   => __('Footer 1', 'tjd-framework'),
+		'footer2'   => __('Footer 2', 'tjd-framework'),
+		'footer3'   => __('Footer 3', 'tjd-framework'),
 	);
 
 	register_nav_menus($locations);
@@ -250,21 +252,19 @@ function produk($cat = null, $item)
 	<div class="product-wrapper-1 appear-animate mb-7">
 		<div class="title-link-wrapper pb-1 mb-4">
 			<h2 class="title ls-normal mb-0"><?php echo get_the_category_by_ID($cat); ?></h2>
-			<a href="shop-boxed-banner.html" class="font-size-normal font-weight-bold ls-25 mb-0">More
-				Products<i class="w-icon-long-arrow-right"></i></a>
+			<a href="<?php bloginfo('url'); ?>/produk" class="font-size-normal font-weight-bold ls-25 mb-0">Produk Lainnya<i class="w-icon-long-arrow-right"></i></a>
 		</div>
 		<div class="row">
 			<div class="col-lg-3 col-sm-4 mb-4">
-				<div class="banner h-100 br-sm" style="background-image: url(<?php bloginfo('template_url'); ?>/assets//images/demos/demo1/banners/5.jpg); 
+				<div class="banner h-100 br-sm" style="background-image: url(<?php bloginfo('template_url'); ?>/assets/images/banner-samping.jpg); 
                             background-color: #EAEFF3;">
 					<div class="banner-content content-top">
-						<h5 class="banner-subtitle font-weight-normal mb-2">Deals And Promotions</h5>
+						<h5 class="banner-subtitle font-weight-normal mb-2">Promos 17 Agustus</h5>
 						<hr class="banner-divider bg-dark mb-2">
 						<h3 class="banner-title font-weight-bolder text-uppercase ls-25">
-							Trending <br> <span class="font-weight-normal text-capitalize">House
-								Utensil</span>
+							Oleh-oleh <br> <span class="font-weight-normal text-capitalize">Khas Jogja</span>
 						</h3>
-						<a href="shop-banner-sidebar.html" class="btn btn-dark btn-outline btn-rounded btn-sm">shop now</a>
+						<a href="<?php bloginfo('url'); ?>/produk" class="btn btn-dark btn-outline btn-rounded btn-sm">Lihat Produk</a>
 					</div>
 				</div>
 			</div>
