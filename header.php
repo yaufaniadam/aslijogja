@@ -14,7 +14,8 @@
     <script>
         WebFontConfig = {
             google: {
-                families: ['Roboto:400,500,600,700,800']
+                families: ['Roboto:400,500,600,700,800'],
+                families: ['IBM Plex Sans:300,400,600'],
             }
         };
         (function(d) {
@@ -44,9 +45,15 @@
                         <p class="welcome-msg">Selamat Datang / Sugeng Rawuh!</p>
                     </div>
                     <div class="header-right">
-                        <a href="<?php bloginfo('url'); ?>/wp-login.php" class="d-lg-show login sign-in"><i class="w-icon-account"></i>Login</a>
-                        <span class="delimiter d-lg-show">/</span>
-                        <a href="<?php bloginfo('url'); ?>/daftar" class="ml-0 d-lg-show login register">Daftar</a>
+
+                        <?php if(!is_user_logged_in()) { ?>
+                            <a href="<?php bloginfo('url'); ?>/wp-login.php" class="d-lg-show login sign-in"><i class="w-icon-account"></i>Login</a>
+                            <span class="delimiter d-lg-show">/</span>
+                            <a href="<?php bloginfo('url'); ?>/daftar" class="ml-0 d-lg-show login register">Daftar</a>
+                        <?php } else { ?>   
+                            <a href="<?php bloginfo('url'); ?>/akun-saya" class="d-lg-show login sign-in"><i class="w-icon-user"></i>Akun Saya</a>
+                            <a href="<?php echo wp_logout_url( get_permalink() ); ?>" class="d-lg-show login sign-in"><i class="w-icon-logout"></i>Logout</a>
+                        <?php } ?>   
                     </div>
                 </div>
             </div>
@@ -96,7 +103,7 @@
                     <div class="inner-wrap">
                     <div class="header-left">
                             <div class="dropdown category-dropdown has-border" data-visible="true">
-                                <a href="#" class="category-toggle text-dark" role="button" data-toggle="dropdown"
+                                <a href="#" class="category-toggle" role="button" data-toggle="dropdown"
                                     aria-haspopup="true" aria-expanded="true" data-display="static"
                                     title="Browse Categories">
                                     <i class="w-icon-category"></i>
@@ -104,47 +111,34 @@
                                 </a>
 
                                 <div class="dropdown-box">
-                                    <ul class="menu vertical-menu category-menu">
+                                <?php
+                                wp_nav_menu(
+                                    array(
+                                        'menu'              => 'header-kategori',
+                                        'theme_location'    => 'header-kategori',
+                                        'depth'             => 2,
+                                        'container'         => 'nav',
+                                        'container_id'      => 'kategori-utama',
+                                        'container_class'      => 'vertical-menu category-menu',
+                                        'fallback_cb'       => 'wp_bootstrap_navwalker::fallback',
+                                        'walker'            => new WP_Bootstrap_Navwalker()
+                                    )
+                                )
+                                ?>
+                                    <!-- <ul class="menu vertical-menu category-menu">
                                         <li>
                                             <a href="shop-fullwidth-banner.html">
                                                 <i class="w-icon-tshirt2"></i>Fashion
                                             </a>
-                                            <ul class="megamenu">
-                                                <li>
-                                                    <h4 class="menu-title">Women</h4>
-                                                    <hr class="divider">
-                                                    <ul>
-                                                        <li><a href="shop-fullwidth-banner.html">New Arrivals</a>
-                                                        </li>
-                                                        <li><a href="shop-fullwidth-banner.html">Best Sellers</a>
-                                                        </li>
-                                                        <li><a href="shop-fullwidth-banner.html">Trending</a></li>
-                                                        <li><a href="shop-fullwidth-banner.html">Clothing</a></li>
-                                                        <li><a href="shop-fullwidth-banner.html">Shoes</a></li>
-                                                        <li><a href="shop-fullwidth-banner.html">Bags</a></li>
-                                                        <li><a href="shop-fullwidth-banner.html">Accessories</a>
-                                                        </li>
-                                                        <li><a href="shop-fullwidth-banner.html">Jewlery &
-                                                                Watches</a></li>
-                                                        <li><a href="shop-fullwidth-banner.html">Sale</a></li>
-                                                    </ul>
-                                                </li>
-                                               
-                                               
-                                            </ul>
+                                           
                                         </li>
                                         <li>
                                             <a href="shop-fullwidth-banner.html">
                                                 <i class="w-icon-tshirt2"></i>Fashion
                                             </a>
                                         </li>                                       
-                                        <!-- <li>
-                                            <a href="shop-banner-sidebar.html"
-                                                class="font-weight-bold text-primary text-uppercase ls-25">
-                                                View All Categories<i class="w-icon-angle-right"></i>
-                                            </a>
-                                        </li> -->
-                                    </ul>
+                                      
+                                    </ul> -->
                                 </div>
                             </div>
                             

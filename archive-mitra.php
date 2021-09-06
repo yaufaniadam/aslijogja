@@ -18,9 +18,9 @@
         <div class="container">
 
             <!-- Start of Shop Banner -->
-            <div class="shop-default-banner banner d-flex align-items-center mb-5 br-xs" style="background-image: url(assets/images/shop/banner1.jpg); background-color: #FFC74E;">
+            <div class="shop-default-banner banner d-flex align-items-center mb-5 br-xs" style="background-image: url(<?php echo get_bloginfo('template_directory'); ?>/assets/images/bannerpage.jpg); background-color: #FFC74E;">
                 <div class="banner-content">
-                    <h4 class="banner-subtitle font-weight-bold">Mitra UMKM</h4>
+                    <h4 class="banner-subtitle font-weight-bold text-white">Mitra UMKM</h4>
                     <h3 class="banner-title text-white text-uppercase font-weight-bolder ls-normal">Asli dari Jogja</h3>
                     <!-- <a href="shop-banner-sidebar.html" class="btn btn-dark btn-rounded btn-icon-right">Discover
                         Now<i class="w-icon-long-arrow-right"></i></a> -->

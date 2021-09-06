@@ -29,7 +29,7 @@
                     the_post_thumbnail('large');
                   } else {
                   ?>
-                    <img src="<?php bloginfo('template_directory'); ?>/images/blog/17.jpg" alt="<?php the_title(); ?>">
+                    <img src="<?php bloginfo('template_directory'); ?>/assets/images/noimage-large.jpg" alt="<?php the_title(); ?>">
                   <?php
                   }
                   ?>
@@ -52,7 +52,7 @@
                         <?php if ($featured_img_url) { ?>
                           <img src="<?php echo $featured_img_url; ?>" alt="Brand" width="60" height="60" />
                         <?php } else { ?>
-                          <img src="<?php bloginfo('template_url'); ?>/assets/images/products/brand/brand-4.jpg" alt="Brand" width="40" height="40" />
+                          <img src="<?php bloginfo('template_url'); ?>/assets/images/noimage-thumb.jpg" alt="Brand" width="40" height="40" />
                         <?php } ?>
                       </a>
                     </figure>
@@ -195,7 +195,7 @@
                           the_post_thumbnail('small');
                         } else {
                         ?>
-                          <img src="<?php bloginfo('template_directory'); ?>/assets/images/noimage-related-product.jpg" width="280" height="180" alt="<?php the_title(); ?>">
+                          <img src="<?php bloginfo('template_directory'); ?>/assets/images/noimage-small.jpg" width="280" height="180" alt="<?php the_title(); ?>">
                         <?php
                         }
                         ?>

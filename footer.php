@@ -8,8 +8,8 @@
                     <div class="row">
                         <div class="col-lg-4 col-sm-6">
                             <div class="widget widget-about">
-                                <a href="demo1.html" class="logo-footer">
-                                    <img src="<?php bloginfo('template_url'); ?>/assets//images/logo_footer.png" alt="logo-footer" width="144"
+                                <a href="<?php bloginfo('url'); ?>" class="logo-footer">
+                                    <img src="<?php bloginfo('template_url'); ?>/assets//images/logo.png" alt="logo-footer" width="194"
                                         height="45" />
                                 </a>
                                 <div class="widget-body">

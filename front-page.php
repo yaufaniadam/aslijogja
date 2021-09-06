@@ -1,19 +1,40 @@
 <?php get_header(); ?>
 <!-- Start of Main-->
 <main class="main">
+    <?php
 
-    <section class="intro-section">
-        <?php
+    $slider = get_field('slider');
 
-        while (have_posts()) : the_post();
+    $args = array(
+        'post_status'   => 'publish',
+        'post_type'     => 'slider',
+        'posts_per_page' => 3,
+        'post__in' => $slider,
+    );
 
-            the_content();
-
-        endwhile;
-
-        ?>
-    </section>
-    <!-- End of .intro-section -->
+    $the_query = null;
+    $the_query = new WP_Query();
+    $the_query->query($args);
+    ?>
+    <div class="intro-wrapper mb-4 appear-animate">
+        <div class="owl-carousel owl-theme owl-nav-inner owl-nav-md row cols-1 gutter-no animation-slider" data-owl-options="{
+                        'nav': true,
+                        'dots': false,
+                        'autoplay':true,
+                        'autoplayTimeout':3000,
+                        'loop':true
+                    }">
+            <?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
+                <div class="banner  intro-slide br-sm">
+                    <div class="banner-content x-50 w-100">
+                        <?php the_content();  ?>
+                    </div>
+                </div>
+            <?php endwhile;
+            wp_reset_query();
+            ?>
+        </div>
+    </div>
 
     <?php
     $banner_home_atas = get_field('banner_home_atas');
@@ -24,11 +45,17 @@
     $banner_tengah = get_field('banner_tengah');
     $link_banner_tengah = get_field('link_banner_tengah');
     $banner_tengah = get_field('banner_tengah');
+    $banner_bawah = get_field('banner_bawah');
 
+    ?>
+    <div class="container">
+            <?php brands(10); ?>
+     
+        <?php
     if (in_array(1, $banner_home_atas)) { ?>
-        <div class="container">
+        
+            <div class="row category-banner-wrapper appear-animate pt-6 pb-0  pb-lg-8">              
 
-            <div class="row category-banner-wrapper appear-animate pt-6 pb-8">
                 <div class="col-md-6 mb-4">
                     <div class="banner banner-fixed br-xs">
                         <figure>
@@ -68,13 +95,14 @@
         </div>
 
     <?php } ?>
+    
 
     <div class="container">
-        <?php produk(get_field('kategori_produk_1'), 10) ?>
+        <?php produk(get_field('kategori_produk_1'), 12) ?>
         <!-- End of Product Wrapper 1 -->
 
-        <?php if (in_array(1, $banner_tengah)) { ?>
-            <div class="banner banner-fashion appear-animate br-sm mb-9">
+        <?php if($banner_tengah) { if (in_array(1, $banner_tengah)) { ?>
+            <div class="banner banner-fashion appear-animate br-sm mb-0 mb-lg-4">
                 <div class="banner-content align-items-center">
                     <?php
                     if (!empty($banner_tengah)) { ?>
@@ -90,9 +118,30 @@
             </div>
             <!-- End of Banner Tengah -->
 
-        <?php } ?>
+        <?php }} ?>
 
-        <?php produk(get_field('kategori_produk_2'), 10) ?>
+        <?php produk(get_field('kategori_produk_2'), 12) ?>
+
+        <?php if($banner_bawah) { if (in_array(1, $banner_bawah)) { ?>
+            <div class="banner banner-fashion appear-animate br-sm mb-4">
+                <div class="banner-content align-items-center">
+                    <?php
+                    if (!empty($banner_bawah)) { ?>
+                        <a href="<?php echo $banner_bawah; ?>" target="_blank">
+                            <img src="<?php echo esc_url($banner_bawah['url']); ?>" alt="<?php echo esc_attr($banner_bawah['alt']); ?>" />
+                        </a>
+                    <?php } else { ?>
+
+                        <img src="<?php bloginfo('template_url'); ?>/assets/images/bannerkirikanan.png" alt="Category Banner" width="610" height="160" style="background-color: #ecedec;" />
+
+                    <?php } ?>
+                </div>
+            </div>
+            <!-- End of Banner Tengah -->
+
+        <?php } } ?>
+
+        <?php produk(get_field('kategori_produk_3'), 12) ?>
 
         <div class="post-wrapper appear-animate mb-4">
             <div class="title-link-wrapper pb-1 mb-4">

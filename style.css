@@ -12,8 +12,7 @@ Tag: responsive
 /* social icon marketplace */
 
 
-element.style {
-}
+
 
 .marketplace-icon {
     width: 32px;
@@ -95,4 +94,179 @@ element.style {
     color:#9b9b9b;
     padding:10px 0;
     font-style: italic;
+}
+
+/* BBPRESS */
+
+.widget-forum ul {
+  padding:0;
+  list-style:none;
+}
+.widget-forum ul li a {
+  display: block;
+  padding: 1rem 0 1rem .2rem
+}
+.bbp-topics-widget li {
+  margin-bottom:10px;
+  line-height:2.5rem;
+  padding-bottom:10px;
+  border-bottom:1px solid #ddd;
+}
+.bbp-topics-widget li a {
+  font-weight:bold;
+  padding:0 !important;
+}
+.bbp-topics-widget li .topic-author a {
+  font-weight:normal;
+  display: inline-block;
+}
+
+.bbp-topics-widget li div {
+  font-style: italic;
+  font-size:12px;
+}
+
+div.bbp-breadcrumb {
+    float: left;
+    padding: 1.5rem 0 1rem;
+    font-size: 1.3rem !important;
+}
+
+#bbpress-forums #bbp-search-form #bbp_search {
+  margin-top:60px;
+  margin-bottom:10px;
+}
+.bbp-search-form input {
+  min-height: 3.5rem !important;
+}
+
+.bbp-author-name {
+  margin-left:5px;
+}
+
+#kategori-utama .menu{
+    display: block !important;
+    margin-left:20px;
+}
+#kategori-utama .menu li {
+  display: block;
+}
+#kategori-utama .menu li a {
+    display: block;
+    font-size:20px;
+    font-weight: normal;
+    padding: 15px 0 15px 0;
+}
+
+@font-face {
+  font-family: 'icomoon';
+  src:  url('assets/fonts/icomoon/fonts/icomoon.eot?vqutd2');
+  src:  url('assets/fonts/icomoon/fonts/icomoon.eot?vqutd2#iefix') format('embedded-opentype'),
+    url('assets/fonts/icomoon/fonts/icomoon.ttf?vqutd2') format('truetype'),
+    url('assets/fonts/icomoon/fonts/icomoon.woff?vqutd2') format('woff'),
+    url('assets/fonts/icomoon/fonts/icomoon.svg?vqutd2#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+#kategori-utama .menu li a::before {
+  font-family: 'icomoon' !important;
+  
+  width:50px;
+  height: 50px;
+  display: inline-block;
+  margin-right:5px;
+  font-size: 45px;
+}
+
+#kategori-utama .menu li.makanan a::before {
+  content: "\e903";
+}
+#kategori-utama .menu li.souvenir a::before {
+  content: "\e902";
+}
+#kategori-utama .menu li.fashion a::before {
+  content: "\e901";
+}
+#kategori-utama .menu li.buku a::before {
+  content: "\e900";
+}
+
+.category-banner-wrapper img, .category-cosmetic-lifestyle img {
+  min-height: auto !important;
+}
+
+.banner-fashion {
+  padding: 2rem 0 !important;
+}
+
+.main.umkm {
+  background:#e7f7ea
+}
+.header-umkm {
+  text-align: left;
+}
+.header-umkm h1.page-title {
+  color:#222222;
+  font-size: 2.5rem;
+}
+
+.umkm .main-content {
+  background:#ffffff;
+  padding:35px 30px;
+  border-radius: 5px;
+  box-shadow: -2px 1px 27px -2px rgba(0,0,0,0.38);
+  -webkit-box-shadow: -2px 1px 27px -2px rgba(0,0,0,0.38);
+  -moz-box-shadow: -2px 1px 27px -2px rgba(0,0,0,0.38);
+}
+
+.acf-label p.description {
+  font-style: italic;
+  font-size:1.3rem !important;
+  color:#666666;
+}
+
+.acf-fields > .acf-field {
+  padding:15px 0 !important;
+}
+
+.acf-field.acf-field-group .acf-fields {
+  padding:0px 15px 10px;
+}
+
+.acf-button, .user-registration-Button.button {
+  padding:10px 20px;
+  background:#056839;
+  border:1px solid #056839;
+  border-radius: 5px;
+  color:#fff;
+  cursor: pointer;
+}
+.acf-button:hover {
+  background:#07864b;
+}
+
+.acf-fields > .acf-tab-wrap .acf-tab-group {
+  border-top:none !important;
+}
+
+.sidebar-content.umkm {
+  border-radius:5px;
+  box-shadow: -2px 1px 27px -2px rgba(0,0,0,0.38);
+  -webkit-box-shadow: -2px 1px 27px -2px rgba(0,0,0,0.38);
+  -moz-box-shadow: -2px 1px 27px -2px rgba(0,0,0,0.38);
+}
+.sidebar-content.umkm .widget {
+  padding:5px 20px 20px;
+}
+
+.ur-form-grid fieldset {
+  margin-bottom:20px;
+}
+#message.updated p {
+  margin-top:20px;
+  display: block;
+  padding:5px 15px;
+  background-color: #78d4a9;
 }

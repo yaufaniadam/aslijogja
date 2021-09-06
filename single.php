@@ -1,9 +1,5 @@
 <?php get_header(); ?>
 
-
-
-
-
 <!-- Start of Main -->
 <main class="main">
     <!-- Start of Page Header -->

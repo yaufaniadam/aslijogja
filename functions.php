@@ -2,13 +2,21 @@
 require_once('inc/wp_bootstrap_navwalker.php');
 require_once('inc/custom_walker_nav_menu.php');
 require_once('inc/better-excerpts.php');
+require_once('inc/cpt.php');
 
-// require 'update-checker/plugin-update-checker.php';
-// $myUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
-// 	'https://solusidesain-update-theme.netlify.app/aslijogja/theme.json',
-// 	__FILE__, //Full path to the main plugin file or functions.php.
-// 	'lab-ip'
-// );
+require 'update-checker/plugin-update-checker.php';
+$myUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
+	'https://solusidesain-update-theme.netlify.app/aslijogja/theme.json',
+	__FILE__, //Full path to the main plugin file or functions.php.
+	'aslijogja'
+);
+
+add_filter( 'query_vars', 'wpse26555_add_vars' );
+function wpse26555_add_vars( $vars )
+{
+    $vars[] = 'id_produk';
+    return $vars;
+}
 
 function aslijogja_theme_support()
 {
@@ -75,6 +83,7 @@ function aslijogja_menus()
 	$locations = array(
 		'topbar'   => __('Top Bar Menu', 'tjd-framework'),
 		'header'   => __('Header Menu', 'tjd-framework'),
+		'header-kategori'   => __('Kategori Utama', 'tjd-framework'),
 		'footer1'   => __('Footer 1', 'tjd-framework'),
 		'footer2'   => __('Footer 2', 'tjd-framework'),
 		'footer3'   => __('Footer 3', 'tjd-framework'),
@@ -111,6 +120,20 @@ function aslijogja_register_scripts()
 }
 
 add_action('wp_enqueue_scripts', 'aslijogja_register_scripts');
+
+function arphabet_widgets_init() {
+
+	register_sidebar( array(
+		'name'          => 'Sidebar Forum',
+		'id'            => 'forum',
+		'before_widget' => '<div id="%1$s" class="widget %2$s widget-forum">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h3 class="widget-title bb-no mb-0">',
+		'after_title'   => '</h3>',
+	) );
+
+}
+add_action( 'widgets_init', 'arphabet_widgets_init' );
 
 function mitra($cat = null)
 {
@@ -232,7 +255,8 @@ function produk($cat = null, $item)
 	$args = array(
 		'post_status'   => 'publish',
 		'post_type'     => 'produk',
-		'posts_per_page' => $item,
+		'orderby'     => 'rand',
+		'posts_per_page' => 20,
 		'tax_query' => array(
 			array(
 				'taxonomy' => 'kat_produk',
@@ -249,13 +273,13 @@ function produk($cat = null, $item)
 
 	?>
 
-	<div class="product-wrapper-1 appear-animate mb-7">
+	<div class="product-wrapper-1 appear-animate mb-4">
 		<div class="title-link-wrapper pb-1 mb-4">
 			<h2 class="title ls-normal mb-0"><?php echo get_the_category_by_ID($cat); ?></h2>
 			<a href="<?php bloginfo('url'); ?>/produk" class="font-size-normal font-weight-bold ls-25 mb-0">Produk Lainnya<i class="w-icon-long-arrow-right"></i></a>
 		</div>
 		<div class="row">
-			<div class="col-lg-3 col-sm-4 mb-4">
+			<!-- <div class="col-lg-3 col-sm-4 mb-4">
 				<div class="banner h-100 br-sm" style="background-image: url(<?php bloginfo('template_url'); ?>/assets/images/banner-samping.jpg); 
                             background-color: #EAEFF3;">
 					<div class="banner-content content-top">
@@ -267,12 +291,12 @@ function produk($cat = null, $item)
 						<a href="<?php bloginfo('url'); ?>/produk" class="btn btn-dark btn-outline btn-rounded btn-sm">Lihat Produk</a>
 					</div>
 				</div>
-			</div>
+			</div> -->
 			<!-- End of Banner -->
-			<div class="col-lg-9 col-sm-8">
-				<div class="owl-carousel owl-theme row cols-xl-4 cols-lg-3 cols-2" data-owl-options="{
+			<div class="col-lg-12 col-sm-12">
+				<div class="owl-carousel owl-theme row cols-xl-6 cols-lg-3 cols-2" data-owl-options="{
                                 'nav': false,
-                                'dots': true,
+                                'dots': false,
                                 'margin': 20,
                                 'responsive': {
                                     '0': {
@@ -282,10 +306,10 @@ function produk($cat = null, $item)
                                         'items': 2
                                     },
                                     '992': {
-                                        'items': 3
+                                        'items': 4
                                     },
                                     '1200': {
-                                        'items': 4
+                                        'items': 6
                                     }
                                 }
                             }">
@@ -351,6 +375,97 @@ function produk($cat = null, $item)
 	wp_reset_query(); ?>
 <?php
 }
+function produk_saya()
+{
+
+?>
+	<?php
+	$args = array(
+		'post_status'   => 'publish',
+		'post_type'     => 'produk',
+		'author' => get_current_user_id(),
+		'posts_per_page' => 20,
+	);
+
+	$the_query = null;
+	$the_query = new WP_Query();
+	$the_query->query($args);
+
+	?>
+
+	<div class="product-wrapper-1 appear-animate mb-4 mt-8">
+	
+		<div class="row">
+			<!-- <div class="col-lg-3 col-sm-4 mb-4">
+				<div class="banner h-100 br-sm" style="background-image: url(<?php bloginfo('template_url'); ?>/assets/images/banner-samping.jpg); 
+                            background-color: #EAEFF3;">
+					<div class="banner-content content-top">
+						<h5 class="banner-subtitle font-weight-normal mb-2">Promos 17 Agustus</h5>
+						<hr class="banner-divider bg-dark mb-2">
+						<h3 class="banner-title font-weight-bolder text-uppercase ls-25">
+							Oleh-oleh <br> <span class="font-weight-normal text-capitalize">Khas Jogja</span>
+						</h3>
+						<a href="<?php bloginfo('url'); ?>/produk" class="btn btn-dark btn-outline btn-rounded btn-sm">Lihat Produk</a>
+					</div>
+				</div>
+			</div> -->
+			<!-- End of Banner -->
+			<div class="col-lg-12 col-sm-12">
+				<div class="row cols-xl-6 cols-lg-3 cols-2" ">
+
+					<?php $i = 1;
+
+					while ($the_query->have_posts()) : $the_query->the_post(); ?>
+
+				
+							<div class="product-col">
+						
+
+							<div class="product-wrap product text-center">
+								<figure class="product-media">
+									<a href="<?php the_permalink(); ?>">
+										<?php
+										if (has_post_thumbnail()) {
+											the_post_thumbnail('small');
+										} else {
+										?>
+											<img src="<?php bloginfo('template_directory'); ?>/assets/images/noimage-small.jpg" width="280" height="180" alt="<?php the_title(); ?>">
+										<?php
+										}
+										?>
+									</a>
+
+								</figure>
+								<div class="product-details">
+									<h4 class="product-name"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
+									<div class="product-price">
+										<ins class="new-price">Rp<?php echo number_format(get_field('harga', get_the_ID())); ?></ins>
+									</div>
+									<div class="ratings-container">
+											<a class="btn btn-sm btn-ellipse btn-secondary" href="<?php echo get_bloginfo('url'); ?>/edit-produk?id_produk=<?php echo get_the_ID(); ?>">Edit <i class="fas fa-edit"></i></a>
+									</div>
+									
+								</div>
+							</div>
+
+					
+							</div>
+
+					<?php
+					endwhile;  ?>
+
+				</div>
+				<!-- End of Produts -->
+			</div>
+		</div>
+	</div>
+	<!-- End of Product Wrapper 1 -->
+
+
+	<?php $the_query = null;
+	wp_reset_query(); ?>
+<?php
+}
 
 function brands($item)
 {
@@ -374,10 +489,11 @@ function brands($item)
 		<div class="row brands-carousel owl-carousel owl-theme cols-xl-7 cols-lg-6 cols-md-4 cols-sm-3 cols-2" data-owl-options="{
                                 'items': 7,
                                 'nav': false,
-                                'dots': true,
+                                'dots': false,
                                 'margin': 20,
                                 'loop': true,
                                 'autoPlay': 'true',
+																'autoplayTimeout':1000,
                                 'responsive': {
                                     '0': {
                                         'items': 2
@@ -718,63 +834,56 @@ function wpdocs_remove_menus()
 	}
 }
 add_action('admin_menu', 'wpdocs_remove_menus');
-
-
-// // save pemilik sebagai kategori
-// add_action('acf/save_post', 'save_post_type_post', 20); // fires after ACF
-// function save_post_type_post($post_id) {
-//   $post_type = get_post_type($post_id);
-//   if (($post_type == 'kkn')) {  
-// 		$mitra_umkm = get_field('mitra_umkm', $post_id);
-// 		$post = array(
-// 			'ID' => $post_id,
-// 			'post_title' => $user_id
-// 		);
-// 		wp_update_post($post);
-// 	}
-// }
-
-// Ensures that taxonomy fields saves properly.
-// Currently they are not saving well.
-// Needs to be applied to each post with an ACF taxonomy field
-// see more @ https://bit.ly/3bnxQsg
-
-function update_cpt_post_terms($post_id)
-{
-	if (get_post_type($post_id) != 'produk') {
-		return;
-	}
-
-	$terms_amenities = NULL; // this will clear terms if none found
-	$terms_status = NULL; // this will clear terms if none found
-	$terms_certificaciones = NULL;
-
-	if (have_rows('kat_produk', $post_id)) { // loops through the repeater for amenities
-		$terms_amenities = array();
-		while (have_rows('kat_produk', $post_id)) {
-			// add this term to the array
-			$terms_amenities[] = get_sub_field('kategori', false); // false for no formatting
-		}
-	}
-	wp_set_object_terms($post_id, $terms_amenities, 'kategori', false);
-
-	// $status = get_field( 'estatus', $post_id ); // only 1 estatus value is allowed. So we get the value directly
-	// if ( $status ){
-	//   $terms_status[] = $status;
-	// }
-	// set_object_terms($post_id, $terms_status, 'estatuses', false);
-
-	// $certificaciones = get_field('certificaciones', $post_id); // there can be multiple certificaciones, so we have to loop
-	// if ($certificaciones){
-	//   foreach($certificaciones as $certificacion):
-	//       $terms_certificaciones = $certificacion;
-	//   endforeach;
-	// }
-	// set_object_terms($post_id, $terms_certificaciones, 'certificaciones', false);
-
+ 
+function acf_set_featured_image( $value, $post_id, $field  ){
+    
+    if($value != ''){
+	    //Add the value which is the image ID to the _thumbnail_id meta data for the current post
+	   	update_post_meta($post_id, '_thumbnail_id', $value);
+    }
+ 
+    return $value;
 }
 
-add_action('acf/save_post', 'update_cpt_post_terms'); // Fixes issue with taxonomies not saving in some CPTs
+// acf/update_value/name={$field_name} - filter for a specific field based on it's name
+add_filter('acf/update_value/name=logo_umkm', 'acf_set_featured_image', 10, 3);
+
+function acf_set_featured_image_produk( $value, $post_id, $field  ){
+    
+    if($value != ''){
+	    //Add the value which is the image ID to the _thumbnail_id meta data for the current post
+	   	update_post_meta($post_id, '_thumbnail_id', $value);
+    }
+ 
+    return $value;
+}
+
+// acf/update_value/name={$field_name} - filter for a specific field based on it's name
+add_filter('acf/update_value/name=foto_produk', 'acf_set_featured_image_produk', 10, 3);
+
+// function update_cpt_post_terms($post_id)
+// {
+// 	if (get_post_type($post_id) != 'produk') {
+// 		return;
+// 	}
+
+// 	$terms_amenities = NULL; // this will clear terms if none found
+// 	$terms_status = NULL; // this will clear terms if none found
+// 	$terms_certificaciones = NULL;
+
+// 	if (have_rows('kat_produk', $post_id)) { // loops through the repeater for amenities
+// 		$terms_amenities = array();
+// 		while (have_rows('kat_produk', $post_id)) {
+// 			// add this term to the array
+// 			$terms_amenities[] = get_sub_field('kategori', false); // false for no formatting
+// 		}
+// 	}
+// 	wp_set_object_terms($post_id, $terms_amenities, 'kategori', false);
+
+
+// }
+
+// add_action('acf/save_post', 'update_cpt_post_terms'); // Fixes issue with taxonomies not saving in some CPTs
 
 function get_mitra_byauthor($id)
 {
@@ -801,11 +910,41 @@ add_action('user_register', function ($user_id) {
 			'post_title'    => $name,
 			'post_name'    => $slug,
 			'post_author'    => $user_id,
-			'post_status'   => 'publish',
+			'post_status'   => 'pending',
 		);
 		wp_insert_post($post_setup);
 	}
 });
+
+function update_extra_profile_fields($user_id) {
+	$user = get_user_by('ID', $user_id);
+	$role = $user->roles[0];
+	if ($role == 'contributor') {                 
+
+		$args = array(
+			'author'        =>  $user_id, 
+			'post_type'       =>  'mitra',
+			'posts_per_page' => 1 // no limit
+		);
+		$mitra = get_posts( $args );
+		if(count($mitra) ==1) {
+
+			echo "<script type='javascript'> alert(); </script>";
+			// foreach ($mitra as $mitra) {
+			// 	$name = $user->first_name;
+			// 	$post_setup = array(
+			// 		'ID'     => $mitra->ID,
+			// 		'post_type'     => 'mitra',
+			// 		'post_title'    => $name,
+			// 		'post_status'   => 'publish',
+			// 	);
+			// 	wp_update_post($post_setup);
+
+			// }
+		}
+	}	
+}
+add_action('edit_user_profile_update', 'update_extra_profile_fields');
 
 function get_kategori_produk()
 {
@@ -904,3 +1043,9 @@ function posts_link_prev_class($format) {
 	return $format;
 }
 add_filter('previous_post_link', 'posts_link_prev_class');
+
+/* BBPRESS */
+function bbp_enable_visual_editor( $args = array() ) {
+	$args['tinymce'] = true;
+	return $args;
+}

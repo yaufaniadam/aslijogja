@@ -1,151 +1,64 @@
 <?php
-function create_post_types_jadwal()
+function create_post_types_slider()
 {
   // Slider post type 
   $label = array(
-    'name'         => __('Jadwal', 'tjd-framework'),
-    'singular_name'   => __('Jadwal', 'tjd-framework'),
-    'add_new'       => _x('Add New', 'Jadwal', 'tjd-framework'),
-    'add_new_item'     => __('Add New Jadwal', 'tjd-framework'),
-    'edit_item'     => __('Edit Jadwal', 'tjd-framework'),
-    'new_item'       => __('New Jadwal', 'tjd-framework'),
-    'view_item'     => __('View Jadwal', 'tjd-framework'),
-    'search_items'     => __('Search Jadwal', 'tjd-framework'),
-    'not_found'     => __('No Jadwal found', 'tjd-framework'),
-    'not_found_in_trash' => __('No Jadwal found in Trash', 'tjd-framework'),
+    'name'         => __('Slider', 'tjd-framework'),
+    'singular_name'   => __('Slider', 'tjd-framework'),
+    'add_new'       => _x('Add New', 'Slider', 'tjd-framework'),
+    'add_new_item'     => __('Add New Slider', 'tjd-framework'),
+    'edit_item'     => __('Edit Slider', 'tjd-framework'),
+    'new_item'       => __('New Slider', 'tjd-framework'),
+    'view_item'     => __('View Slider', 'tjd-framework'),
+    'search_items'     => __('Search Slider', 'tjd-framework'),
+    'not_found'     => __('No Slider found', 'tjd-framework'),
+    'not_found_in_trash' => __('No Slider found in Trash', 'tjd-framework'),
     'parent_item_colon' => ''
   );
   $args = array(
     'labels'       => $label,
-    'description'     => __('All Jadwal upload here', 'tjd-framework'),
+    'description'     => __('All Slider upload here', 'tjd-framework'),
     'public'       => true,
-    'supports'      => array('title', 'thumbnail'),
+    'supports'      => array('title'),
     'query_var'     => true,
-    'rewrite'       => array('slug' => 'jadwal'),
-    'menu_icon'      => 'dashicons-calendar-alt',
+    'rewrite'       => array('slug' => 'slider'),
+    'menu_icon'      => 'dashicons-slides',
     'show_in_nav_menus' => false,
     'has_archive'     => true,
     'menu_position'   => 20,
   );
-  register_post_type('jadwal', $args);
+  register_post_type('slider', $args);
 }
-add_action('init', 'create_post_types_jadwal');
+add_action('init', 'create_post_types_slider');
 
-// Add taxonomies
-add_action('init', 'create_taxonomies_jadwal');
-
-function create_taxonomies_jadwal()
-{
-  // Mitra taxonomies
-  $jadwal_cats = array(
-    'name' => __('Jadwal Categories', 'tjd-framework'),
-    'singular_name' => __('Jadwal Category', 'tjd-framework'),
-    'search_items' =>  __('Search Jadwal Categories', 'tjd-framework'),
-    'all_items' => __('All Jadwals Categories', 'tjd-framework'),
-    'parent_item' => __('Parent Jadwal Category', 'tjd-framework'),
-    'parent_item_colon' => __('Parent Jadwal Category:', 'tjd-framework'),
-    'edit_item' => __('Edit Jadwal Category', 'tjd-framework'),
-    'update_item' => __('Update Jadwal Category', 'tjd-framework'),
-    'add_new_item' => __('Add New Jadwal Category', 'tjd-framework'),
-    'new_item_name' => __('New Jadwal Category Name', 'tjd-framework'),
-    'choose_from_most_used'  => __('Choose from the most used Jadwal categories', 'tjd-framework')
-  );
-
-  register_taxonomy('jadwal_cats', 'jadwal', array(
-    'hierarchical' => true,
-    'labels' => $jadwal_cats,
-    'query_var' => true,
-    'rewrite' => array('slug' => 'jadwal-cats'),
-  ));
-}
-
-function create_post_types_gallery()
-{
-  // Slider post type 
-  $label = array(
-    'name'         => __('Gallery', 'tjd-framework'),
-    'singular_name'   => __('Gallery', 'tjd-framework'),
-    'add_new'       => _x('Add New', 'Gallery', 'tjd-framework'),
-    'add_new_item'     => __('Add New Gallery', 'tjd-framework'),
-    'edit_item'     => __('Edit Gallery', 'tjd-framework'),
-    'new_item'       => __('New Gallery', 'tjd-framework'),
-    'view_item'     => __('View Gallery', 'tjd-framework'),
-    'search_items'     => __('Search Gallery', 'tjd-framework'),
-    'not_found'     => __('No Gallery found', 'tjd-framework'),
-    'not_found_in_trash' => __('No Gallery found in Trash', 'tjd-framework'),
-    'parent_item_colon' => ''
-  );
-  $args = array(
-    'labels'       => $label,
-    'description'     => __('All Gallery upload here', 'tjd-framework'),
-    'public'       => true,
-    'supports'      => array('title', 'thumbnail'),
-    'query_var'     => true,
-    'rewrite'       => array('slug' => 'gallery'),
-    'menu_icon'      => 'dashicons-images-alt',
-    'show_in_nav_menus' => false,
-    'has_archive'     => true,
-    'menu_position'   => 20,
-  );
-  register_post_type('gallery', $args);
-}
-add_action('init', 'create_post_types_gallery');
-
-// Add taxonomies
-add_action('init', 'create_taxonomies_gallery');
-
-function create_taxonomies_gallery()
-{
-  // Mitra taxonomies
-  $gallery_cats = array(
-    'name' => __('Gallery Categories', 'tjd-framework'),
-    'singular_name' => __('Gallery Category', 'tjd-framework'),
-    'search_items' =>  __('Search Gallery Categories', 'tjd-framework'),
-    'all_items' => __('All Gallerys Categories', 'tjd-framework'),
-    'parent_item' => __('Parent Gallery Category', 'tjd-framework'),
-    'parent_item_colon' => __('Parent Gallery Category:', 'tjd-framework'),
-    'edit_item' => __('Edit Gallery Category', 'tjd-framework'),
-    'update_item' => __('Update Gallery Category', 'tjd-framework'),
-    'add_new_item' => __('Add New Gallery Category', 'tjd-framework'),
-    'new_item_name' => __('New Gallery Category Name', 'tjd-framework'),
-    'choose_from_most_used'  => __('Choose from the most used Gallery categories', 'tjd-framework')
-  );
-
-  register_taxonomy('gallery_cats', 'gallery', array(
-    'hierarchical' => true,
-    'labels' => $gallery_cats,
-    'query_var' => true,
-    'rewrite' => array('slug' => 'gallery-cats'),
-  ));
-}
 
 function create_post_types_mitra()
 {
   // Slider post type 
   $label = array(
-    'name'         => __('Mitra', 'tjd-framework'),
-    'singular_name'   => __('Mitra', 'tjd-framework'),
-    'add_new'       => _x('Add New', 'Mitra', 'tjd-framework'),
-    'add_new_item'     => __('Add New Mitra', 'tjd-framework'),
-    'edit_item'     => __('Edit Mitra', 'tjd-framework'),
-    'new_item'       => __('New Mitra', 'tjd-framework'),
-    'view_item'     => __('View Mitra', 'tjd-framework'),
-    'search_items'     => __('Search Mitra', 'tjd-framework'),
-    'not_found'     => __('No Mitra found', 'tjd-framework'),
-    'not_found_in_trash' => __('No Mitra found in Trash', 'tjd-framework'),
+    'name'         => __('Mitra UMKM', 'aslijogja'),
+    'singular_name'   => __('Mitra UMKM', 'aslijogja'),
+    'add_new'       => _x('Tambah', 'Mitra', 'aslijogja'),
+    'add_new_item'     => __('Tambah Mitra', 'aslijogja'),
+    'edit_item'     => __('Edit Profil UMKM', 'aslijogja'),
+    'new_item'       => __('Mitra Baru', 'aslijogja'),
+    'view_item'     => __('Lihat Mitra', 'aslijogja'),
+    'search_items'     => __('Cari Mitra', 'aslijogja'),
+    'not_found'     => __('Mitra tidak ditemukan', 'aslijogja'),
+    'not_found_in_trash' => __('Mitra tidak ditemukan di trash', 'aslijogja'),
     'parent_item_colon' => ''
   );
   $args = array(
     'labels'       => $label,
-    'description'     => __('All Mitra upload here', 'tjd-framework'),
+    'description'     => __('Semua Mitra', 'aslijogja'),
     'public'       => true,
-    'supports'      => array('title', 'thumbnail'),
+    'supports'      => array('title', 'author'),
     'query_var'     => true,
-    'rewrite'       => array('slug' => 'mitra-kami'),
-    'menu_icon'      => 'dashicons-smiley',
+    'rewrite'       => array('slug' => 'mitra-umkm'),
+    'menu_icon'      => 'dashicons-store',
     'show_in_nav_menus' => false,
     'has_archive'     => true,
-    'menu_position'   => 20,
+    'menu_position'   => 10,
   );
   register_post_type('mitra', $args);
 }
@@ -156,177 +69,76 @@ add_action('init', 'create_taxonomies_mitra');
 
 function create_taxonomies_mitra()
 {
-  // Mitra taxonomies
+  // Mitra Kategori
   $mitra_cats = array(
-    'name' => __('Mitra Categories', 'tjd-framework'),
-    'singular_name' => __('Mitra Category', 'tjd-framework'),
-    'search_items' =>  __('Search Mitra Categories', 'tjd-framework'),
-    'all_items' => __('All Mitras Categories', 'tjd-framework'),
-    'parent_item' => __('Parent Mitra Category', 'tjd-framework'),
-    'parent_item_colon' => __('Parent Mitra Category:', 'tjd-framework'),
-    'edit_item' => __('Edit Mitra Category', 'tjd-framework'),
-    'update_item' => __('Update Mitra Category', 'tjd-framework'),
-    'add_new_item' => __('Add New Mitra Category', 'tjd-framework'),
-    'new_item_name' => __('New Mitra Category Name', 'tjd-framework'),
-    'choose_from_most_used'  => __('Choose from the most used Mitra categories', 'tjd-framework')
+    'name' => __('Kategori Mitra', 'aslijogja'),
+    'singular_name' => __('Kategori Mitra', 'aslijogja'),
+    'search_items' =>  __('Cari Kategori Mitra', 'aslijogja'),
+    'all_items' => __('Semua Kategori', 'aslijogja'),
+    'parent_item' => __('Induk Kategori Mitra', 'aslijogja'),
+    'parent_item_colon' => __('Induk Kategori Mitra:', 'aslijogja'),
+    'edit_item' => __('Edit Kategori Mitra', 'aslijogja'),
+    'update_item' => __('Update Kategori Mitra', 'aslijogja'),
+    'add_new_item' => __('Buat Kategori Mitra Baru', 'aslijogja'),
+    'new_item_name' => __('Nama Kategori Mitra Baru', 'aslijogja'),
+    'choose_from_most_used'  => __('Pilih kategori mitra yang sering dipakai', 'aslijogja')
   );
 
-  register_taxonomy('mitra_cats', 'mitra', array(
+  register_taxonomy('kat_mitra', 'mitra', array(
     'hierarchical' => true,
     'labels' => $mitra_cats,
     'query_var' => true,
-    'rewrite' => array('slug' => 'mitra-cats'),
+    'rewrite' => array('slug' => 'kat-mitra'),
   ));
-}
 
-
-// Testimoni
-function create_post_types_testimoni()
-{
-  // Slider post type 
-  $label = array(
-    'name'         => __('Testimoni', 'tjd-framework'),
-    'singular_name'   => __('Testimoni', 'tjd-framework'),
-    'add_new'       => _x('Add New', 'Testimoni', 'tjd-framework'),
-    'add_new_item'     => __('Add New Testimoni', 'tjd-framework'),
-    'edit_item'     => __('Edit Testimoni', 'tjd-framework'),
-    'new_item'       => __('New Testimoni', 'tjd-framework'),
-    'view_item'     => __('View Testimoni', 'tjd-framework'),
-    'search_items'     => __('Search Testimoni', 'tjd-framework'),
-    'not_found'     => __('No Testimoni found', 'tjd-framework'),
-    'not_found_in_trash' => __('No Testimoni found in Trash', 'tjd-framework'),
-    'parent_item_colon' => ''
-  );
-  $args = array(
-    'labels'       => $label,
-    'description'     => __('All Testimoni upload here', 'tjd-framework'),
-    'public'       => true,
-    'supports'      => array('title', 'thumbnail'),
-    'query_var'     => true,
-    'rewrite'       => array('slug' => 'testimoni-kami'),
-    'menu_icon'      => 'dashicons-heart',
-    'show_in_nav_menus' => false,
-    'has_archive'     => true,
-    'menu_position'   => 20,
-  );
-  register_post_type('testimoni', $args);
-}
-add_action('init', 'create_post_types_testimoni');
-
-// Add taxonomies
-add_action('init', 'create_taxonomies_testimoni');
-
-function create_taxonomies_testimoni()
-{
-  // Mitra taxonomies
-  $testimoni_cats = array(
-    'name' => __('Testimoni Categories', 'tjd-framework'),
-    'singular_name' => __('Testimoni Category', 'tjd-framework'),
-    'search_items' =>  __('Search Testimoni Categories', 'tjd-framework'),
-    'all_items' => __('All Testimonis Categories', 'tjd-framework'),
-    'parent_item' => __('Parent Testimoni Category', 'tjd-framework'),
-    'parent_item_colon' => __('Parent Testimoni Category:', 'tjd-framework'),
-    'edit_item' => __('Edit Testimoni Category', 'tjd-framework'),
-    'update_item' => __('Update Testimoni Category', 'tjd-framework'),
-    'add_new_item' => __('Add New Testimoni Category', 'tjd-framework'),
-    'new_item_name' => __('New Testimoni Category Name', 'tjd-framework'),
-    'choose_from_most_used'  => __('Choose from the most used Testimoni categories', 'tjd-framework')
+  // Lokasi
+  $lokasi_mitra = array(
+    'name' => __('Lokasi Mitra', 'aslijogja'),
+    'singular_name' => __('Lokasi Mitra', 'aslijogja'),
+    'search_items' =>  __('Cari Lokasi Mitra', 'aslijogja'),
+    'all_items' => __('Semua Lokasi', 'aslijogja'),
+    'parent_item' => __('Induk Lokasi Mitra', 'aslijogja'),
+    'parent_item_colon' => __('Induk Lokasi Mitra:', 'aslijogja'),
+    'edit_item' => __('Edit Lokasi Mitra', 'aslijogja'),
+    'update_item' => __('Update Lokasi Mitra', 'aslijogja'),
+    'add_new_item' => __('Buat Lokasi Mitra Baru', 'aslijogja'),
+    'new_item_name' => __('Nama Lokasi Mitra Baru', 'aslijogja'),
+    'choose_from_most_used'  => __('Pilih Lokasi mitra yang sering dipakai', 'aslijogja')
   );
 
-  register_taxonomy('testimoni_cats', 'testimoni', array(
+  register_taxonomy('lokasi_mitra', 'mitra', array(
     'hierarchical' => true,
-    'labels' => $testimoni_cats,
+    'labels' => $lokasi_mitra,
     'query_var' => true,
-    'rewrite' => array('slug' => 'testimoni-cats'),
+    'rewrite' => array('slug' => 'lokasi-mitra'),
   ));
+
 }
-
-
-function create_post_types_peneliti()
-{
-  // Slider post type 
-  $label = array(
-    'name'         => __('Peneliti', 'tjd-framework'),
-    'singular_name'   => __('peneliti', 'tjd-framework'),
-    'add_new'       => _x('Add New', 'peneliti', 'tjd-framework'),
-    'add_new_item'     => __('Add New peneliti', 'tjd-framework'),
-    'edit_item'     => __('Edit peneliti', 'tjd-framework'),
-    'new_item'       => __('New peneliti', 'tjd-framework'),
-    'view_item'     => __('View peneliti', 'tjd-framework'),
-    'search_items'     => __('Search peneliti', 'tjd-framework'),
-    'not_found'     => __('No peneliti found', 'tjd-framework'),
-    'not_found_in_trash' => __('No peneliti found in Trash', 'tjd-framework'),
-    'parent_item_colon' => ''
-  );
-  $args = array(
-    'labels'       => $label,
-    'description'     => __('All peneliti upload here', 'tjd-framework'),
-    'public'       => true,
-    'supports'      => array('title', 'thumbnail', 'editor'),
-    'query_var'     => true,
-    'rewrite'       => array('slug' => 'peneliti'),
-    'menu_icon'      => 'dashicons-smiley',
-    'show_in_nav_menus' => false,
-    'has_archive'     => true,
-    'menu_position'   => 20,
-  );
-  register_post_type('peneliti', $args);
-}
-add_action('init', 'create_post_types_peneliti');
-
-// Add taxonomies
-add_action('init', 'create_taxonomies_peneliti');
-
-function create_taxonomies_peneliti()
-{
-  // peneliti taxonomies
-  $peneliti_cats = array(
-    'name' => __('peneliti Categories', 'tjd-framework'),
-    'singular_name' => __('peneliti Category', 'tjd-framework'),
-    'search_items' =>  __('Search peneliti Categories', 'tjd-framework'),
-    'all_items' => __('All penelitis Categories', 'tjd-framework'),
-    'parent_item' => __('Parent peneliti Category', 'tjd-framework'),
-    'parent_item_colon' => __('Parent peneliti Category:', 'tjd-framework'),
-    'edit_item' => __('Edit peneliti Category', 'tjd-framework'),
-    'update_item' => __('Update peneliti Category', 'tjd-framework'),
-    'add_new_item' => __('Add New peneliti Category', 'tjd-framework'),
-    'new_item_name' => __('New peneliti Category Name', 'tjd-framework'),
-    'choose_from_most_used'  => __('Choose from the most used peneliti categories', 'tjd-framework')
-  );
-
-  register_taxonomy('peneliti_cats', 'peneliti', array(
-    'hierarchical' => true,
-    'labels' => $peneliti_cats,
-    'query_var' => true,
-    'rewrite' => array('slug' => 'peneliti-cats'),
-  ));
-}
-
 
 function create_post_types_produk()
 {
   // Slider post type 
   $label = array(
-    'name'         => __('Produk', 'tjd-framework'),
-    'singular_name'   => __('produk', 'tjd-framework'),
-    'add_new'       => _x('Add New', 'produk', 'tjd-framework'),
-    'add_new_item'     => __('Add New produk', 'tjd-framework'),
-    'edit_item'     => __('Edit produk', 'tjd-framework'),
-    'new_item'       => __('New produk', 'tjd-framework'),
-    'view_item'     => __('View produk', 'tjd-framework'),
-    'search_items'     => __('Search produk', 'tjd-framework'),
-    'not_found'     => __('No produk found', 'tjd-framework'),
-    'not_found_in_trash' => __('No produk found in Trash', 'tjd-framework'),
+    'name'         => __('Produk', 'aslijogja'),
+    'singular_name'   => __('Produk', 'aslijogja'),
+    'add_new'       => _x('Tambah', 'produk', 'aslijogja'),
+    'add_new_item'     => __('Tambah Produk Baru', 'aslijogja'),
+    'edit_item'     => __('Edit Produk', 'aslijogja'),
+    'new_item'       => __('Produk Baru', 'aslijogja'),
+    'view_item'     => __('Lihat Produk', 'aslijogja'),
+    'search_items'     => __('Cari produk', 'aslijogja'),
+    'not_found'     => __('Produk tidak ada', 'aslijogja'),
+    'not_found_in_trash' => __('Produk tidak ada Trash', 'aslijogja'),
     'parent_item_colon' => ''
   );
   $args = array(
     'labels'       => $label,
-    'description'     => __('All produk upload here', 'tjd-framework'),
+    'description'     => __('Semua Produk yang diupload', 'aslijogja'),
     'public'       => true,
-    'supports'      => array('title', 'thumbnail', 'editor'),
+    'supports'      => array('title', 'author'),
     'query_var'     => true,
-    'rewrite'       => array('slug' => 'produk-kami'),
-    'menu_icon'      => 'dashicons-smiley',
+    'rewrite'       => array('slug' => 'produk'),
+    'menu_icon'      => 'dashicons-products',
     'show_in_nav_menus' => false,
     'has_archive'     => true,
     'menu_position'   => 10,
@@ -342,23 +154,24 @@ function create_taxonomies_produk()
 {
   // produk taxonomies
   $produk_cats = array(
-    'name' => __('produk Categories', 'tjd-framework'),
-    'singular_name' => __('produk Category', 'tjd-framework'),
-    'search_items' =>  __('Search produk Categories', 'tjd-framework'),
-    'all_items' => __('All produks Categories', 'tjd-framework'),
-    'parent_item' => __('Parent produk Category', 'tjd-framework'),
-    'parent_item_colon' => __('Parent produk Category:', 'tjd-framework'),
-    'edit_item' => __('Edit produk Category', 'tjd-framework'),
-    'update_item' => __('Update produk Category', 'tjd-framework'),
-    'add_new_item' => __('Add New produk Category', 'tjd-framework'),
-    'new_item_name' => __('New produk Category Name', 'tjd-framework'),
-    'choose_from_most_used'  => __('Choose from the most used produk categories', 'tjd-framework')
+    'name' => __('Kategori Produk', 'aslijogja'),
+    'singular_name' => __('Kategori Produk ', 'aslijogja'),
+    'search_items' =>  __('Cari Kategori Produk ', 'aslijogja'),
+    'all_items' => __('Semua Kategori Produk', 'aslijogja'),
+    'parent_item' => __('Induk Kategori Produk', 'aslijogja'),
+    'parent_item_colon' => __('Induk Kategori Produk:', 'aslijogja'),
+    'edit_item' => __('Edit Kategori Produk', 'aslijogja'),
+    'update_item' => __('Update Kategori Produk', 'aslijogja'),
+    'add_new_item' => __('Tambah Kategori Produk', 'aslijogja'),
+    'new_item_name' => __('Nama Kategori Produk Baru', 'aslijogja'),
+    'choose_from_most_used'  => __('Kategori Produk sering dipakai', 'aslijogja')
   );
 
-  register_taxonomy('produk_cats', 'produk', array(
+  register_taxonomy('kat_produk', 'produk', array(
     'hierarchical' => true,
     'labels' => $produk_cats,
     'query_var' => true,
-    'rewrite' => array('slug' => 'produk-cats'),
+    // 'meta_box_cb' => false,
+    'rewrite' => array('slug' => 'produk-kategori'),
   ));
 }

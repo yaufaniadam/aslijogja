@@ -157,7 +157,7 @@
             wp_reset_query();
             ?>
       <!-- Start of Shop Content -->
-      <div class="shop-content row gutter-lg mb-10">
+      <div class="shop-content row gutter-lg mb-0">
         <!-- Start of Sidebar, Shop Sidebar -->
         <aside class="sidebar shop-sidebar sticky-sidebar-wrapper sidebar-fixed">
           <!-- Start of Sidebar Overlay -->
@@ -187,9 +187,19 @@
 
         <!-- Start of Shop Main Content -->
         <div class="main-content">
-          
-          <div class="product-wrapper row cols-md-4 cols-sm-2 cols-2">
 
+          <div class="product-desc">
+            <div class="title-link-wrapper">
+              <h2 class="title title-link mb-2">Profil</h2>
+            </div>
+            <?php echo get_field('profil_salin') ?>
+          </div>
+
+          <div class="title-link-wrapper">
+            <h2 class="title title-link mb-2">Produk</h2>
+          </div>
+          <div class="product-wrapper row cols-md-4 cols-sm-2 cols-2">
+          
             <?php
             $args = array(
               'post_status'   => 'publish',
@@ -214,7 +224,7 @@
                         the_post_thumbnail('small');
                       } else {
                       ?>
-                        <img src="<?php bloginfo('template_directory'); ?>/assets/images/newsletter-2.jpg" width="280" height="180" alt="<?php the_title(); ?>">
+                        <img src="<?php bloginfo('template_directory'); ?>/assets/images/noimage-small.jpg" width="280" height="180" alt="<?php the_title(); ?>">
                       <?php
                       }
                       ?>
@@ -262,9 +272,7 @@
         </div>
         <!-- End of Shop Main Content -->
       </div>
-      <!-- End of Shop Content -->
-
-      
+      <!-- End of Shop Content -->     
 
     </div>
   </div>

@@ -6,7 +6,6 @@
     <div class="page-header">
         <div class="container">
             <h1 class="page-title mb-0"><?php echo (is_archive()) ? single_cat_title('', false) : "Artikel/Blog"; ?></h1>
-
         </div>
     </div>
     <!-- End of Page Header -->
